@@ -6,7 +6,7 @@ hardware = Pynamixel.hardwares.USB2AX("/dev/ttyACM0", 1000000)
 system = Pynamixel.System(Pynamixel.Bus(hardware))
 servo = system.add_device(Pynamixel.devices.AX12, 1)
 
-servo.goal_postition.write(0x3ff)
+servo.goal_position.write(0x3ff)
 
 
 
