@@ -5,7 +5,7 @@ import Pynamixel
 hardware = Pynamixel.hardwares.USB2AX("/dev/ttyACM0", 1000000)
 system = Pynamixel.System(Pynamixel.Bus(hardware))
 servo = system.add_device(Pynamixel.devices.AX12, 1)
-print(servo.current_position.read())
+print(servo.present_position.read())
 
 
 
