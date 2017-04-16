@@ -7,22 +7,26 @@ import Pynamixel
 # servo = system.add_device(Pynamixel.devices.AX12, 1)
 # servo.goal_position.write(0x200)
 # servo.moving.read()
-max_lim = 1023
-min_lim = 0
 
-degree = 280
 
-decimal = int((256 * degree) / 75)
-print(decimal)
+degree = 150
 
-if decimal > max_lim:
-    pass
-elif decimal < min_lim:
-    pass
-else:
-    pos = hex(decimal)
-    print(pos)
 
+def deg2hex(degree):
+    max_lim = 1023
+    min_lim = 0
+    decimal = int((256 * degree) / 75)
+    print(decimal)
+    if decimal > max_lim:
+        pass
+    elif decimal < min_lim:
+        pass
+    else:
+        pos = hex(decimal)
+        print(pos)
+
+
+deg2hex(degree)
 
 
 
