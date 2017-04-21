@@ -20,6 +20,11 @@ def servo4(pos):
         print("should move below")
     elif pos > 0:
         print("should move above")
+
+    elif pos == 0:
+        print("is zero")
+    else:
+       print("invalid entry")
     sc.goto(4, pos, 100, True)
 
 
