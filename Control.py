@@ -25,6 +25,15 @@ def servo4(pos):
     elif pos == 0:
         sc.goto(4, pos, 100, True)
 
+def can_move(list):
+    for i in list:
+        if sc.is_moving(i) == False:
+            return True
+
+
+servos = [2,3,4]
+
+
 try:
     working = False
     if (sc.ping(2) == True): # test the connection
@@ -32,7 +41,7 @@ try:
         print("working")
 
     while working:
-        if sc.is_moving(4) == False:
+        if can_move(servos) == True:
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
