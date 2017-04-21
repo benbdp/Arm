@@ -31,7 +31,7 @@ def can_move(list):
             return False
     return True
 def position(num):
-    sc.get_present_position(num,True)
+    return sc.get_present_position(num,True)
 
 servos = [2,3,4]
 
@@ -44,7 +44,7 @@ try:
 
     while working:
         if can_move(servos) == True:
-            print(sc.get_present_position(2,True))
+            print("Servo2: ", position(2), " Servo3: ", position(3), " Servo4: ", position(3))
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
