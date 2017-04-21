@@ -9,8 +9,9 @@ def servo2(pos):
         pos = -pos
 
     elif angle < 0:
-        pass
+        pos = 90
         print("illegal pos")
+
 
 
     elif pos == 0:
