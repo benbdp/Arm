@@ -6,11 +6,17 @@ sc = Connection(port='/dev/ttyACM0', baudrate=1000000)
 
 def servo2(pos):
     if pos > 0:
-        newpos = -pos
+        pos = -pos
+
     elif angle < 0:
         pass
         print("illegal pos")
-    sc.goto(2, newpos, 100, True)
+
+
+    elif pos == 0:
+        print("is zero")
+
+    sc.goto(2, pos, 100, True)
 
 def servo3(pos):
     sc.goto(3, pos, 100, True)
@@ -42,7 +48,7 @@ try:
         angle = input("Enter angle")
         angle = int(angle)
 
-        servo3(angle)
+        servo2(angle)
 
         #
         # if servonum == 2:
