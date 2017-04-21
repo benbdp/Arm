@@ -58,7 +58,7 @@ def read_single_keypress():
     return ret
 
 def moveAnyServo(num,pos):
-    sc.goto(num, pos, 50, True)
+    sc.goto(num, pos, 100, True)
     
 
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
             servo_num = 3;
         if key == '4':
             servo_num = 4;
-        
+        print('You presssed ', key)
         
         
         
