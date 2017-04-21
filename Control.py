@@ -80,7 +80,8 @@ try:
             leg2 = 14.8
             leg3 = 13.8
             print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
-            print(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos()))
+            print("x: ",(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos())))
+            print("y: ", (endy(leg1, servo2pos(), leg2, servo3pos(), leg3, servo4pos())))
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
