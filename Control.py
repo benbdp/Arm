@@ -47,9 +47,6 @@ try:
         elif servonum == 4:
             servo4(angle)
 
-        else:
-            working = False
-
         time.sleep(1)
 
 except:
