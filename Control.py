@@ -33,7 +33,8 @@ def can_move(list):
 def servo2pos():
     pos = sc.get_present_position(2,True)
     if pos < 0:
-        return "illegal pos"
+        pos = abs(pos)
+        return pos
     elif pos > 0:
         pos = -pos
         return pos
