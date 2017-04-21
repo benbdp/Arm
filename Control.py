@@ -3,6 +3,29 @@ import time
 
 sc = Connection(port='/dev/ttyACM0', baudrate=1000000)
 
+
+def servo2(pos):
+    if pos > 0:
+        newpos = -pos
+    elif angle < 0:
+        pass
+        print("illegal pos")
+    sc.goto(2, newpos, 100, True)
+
+def servo3(pos):
+    sc.goto(3, pos, 100, True)
+
+def servo4(pos):
+
+    if pos < 0:
+        newpos = abs(pos)
+
+    elif pos > 0:
+        newpos = -pos
+
+    sc.goto(4, newpos, 100, True)
+
+
 try:
     working = False
     if (sc.ping(2) == True):
@@ -15,20 +38,17 @@ try:
         angle = input("Enter angle")
         angle = int(angle)
 
-        if servonum == 2 and angle > 0:
-            sc.goto(2, -angle, 100, True)
-        elif servonum == 2 and angle < 0:
-            pass
-            print("illegal pos")
+        if servonum == 2:
+            servo2(angle)
 
-        if servonum == 4 and angle > 0:
-            sc.goto(4, -angle, 100, True)
+        elif servonum == 3:
+            servo3(angle)
 
-        elif servonum == 4 and angle < 0:
-            sc.goto(4, abs(angle), 100, True)
+        elif servonum == 4:
+            servo4(angle)
 
         else:
-            sc.goto(servonum, angle, 100, True)
+            working = False
 
         time.sleep(1)
 
