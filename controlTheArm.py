@@ -7,7 +7,7 @@ Created on Wed Apr 19 19:37:40 2017
 """
 
 import numpy as np
-from pyax12.conection import Connection
+from pyax12.connection import Connection
 
 sc = Connection(port = '/dev/ttyACM0', baudrate = 1000000)
 
