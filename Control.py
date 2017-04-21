@@ -76,8 +76,11 @@ try:
 
     while working:
         if can_move(servos) == True:
+            leg1 = 12.3
+            leg2 = 14.8
+            leg3 = 13.8
             print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
-            print("x: ",endx(12.3,servo2pos(),14.8,servo3pos(),13.8,servo4pos()),"y: ",endy(12.3,servo2pos(),14.8,servo3pos(),13.8,servo4pos()))
+            print(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos()))
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
