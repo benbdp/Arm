@@ -27,6 +27,7 @@ def servo4(pos):
 
 def can_move(list):
     for i in list:
+        print(i,sc.is_moving(i))
         if sc.is_moving(i) == False:
             return True
 
