@@ -30,8 +30,33 @@ def can_move(list):
         if sc.is_moving(i) == True:
             return False
     return True
-def position(num):
-    return sc.get_present_position(num,True)
+def servo2pos():
+    pos = sc.get_present_position(2,True)
+    if pos < 0:
+        return "illegal pos"
+    elif pos > 0:
+        pos = -pos
+        return pos
+    elif pos == 0:
+        return pos
+
+def servo3pos():
+    pos = sc.get_present_position(3, True)
+    return pos
+
+def servo4pos():
+    pos = sc.get_present_position(4, True)
+    if pos < 0:
+        pos = abs(pos)
+        return pos
+    elif pos > 0:
+        pos = -pos
+        return pos
+    elif pos == 0:
+        return pos
+
+
+
 
 servos = [2,3,4]
 
@@ -44,7 +69,7 @@ try:
 
     while working:
         if can_move(servos) == True:
-            print("Servo2: ", position(2), " Servo3: ", position(3), " Servo4: ", position(3))
+            print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
