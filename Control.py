@@ -17,7 +17,7 @@ try:
 
         if servonum == 2 and angle > 0:
             sc.goto(2, -angle, 100, True)
-        if servonum == 2 and angle < 0:
+        elif servonum == 2 and angle < 0:
             pass
             print("illegal pos")
         else:
