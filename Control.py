@@ -16,14 +16,7 @@ def servo3(pos):
     sc.goto(3, pos, 100, True)
 
 def servo4(pos):
-
-    if pos < 0:
-        newpos = abs(pos)
-
-    elif pos > 0:
-        newpos = -pos
-
-    sc.goto(4, newpos, 100, True)
+    sc.goto(4, pos, 100, True)
 
 
 try:
