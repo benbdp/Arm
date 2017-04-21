@@ -20,6 +20,13 @@ try:
         elif servonum == 2 and angle < 0:
             pass
             print("illegal pos")
+
+        if servonum == 4 and angle > 0:
+            sc.goto(4, -angle, 100, True)
+
+        elif servonum == 4 and angle < 0:
+            sc.goto(4, abs(angle), 100, True)
+
         else:
             sc.goto(servonum, angle, 100, True)
 
