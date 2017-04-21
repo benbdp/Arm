@@ -33,19 +33,22 @@ try:
         print("working")
 
     while working:
-        servonum = input("Enter servo num")
-        servonum = int(servonum)
+        # servonum = input("Enter servo num")
+        # servonum = int(servonum)
         angle = input("Enter angle")
         angle = int(angle)
 
-        if servonum == 2:
-            servo2(angle)
+        servo4(angle)
 
-        if servonum == 3:
-            servo3(angle)
-
-        if servonum == 4:
-            servo4(angle)
+        #
+        # if servonum == 2:
+        #     servo2(angle)
+        #
+        # if servonum == 3:
+        #     servo3(angle)
+        #
+        # if servonum == 4:
+        #     servo4(angle)
 
         time.sleep(1)
 
