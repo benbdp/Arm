@@ -14,7 +14,9 @@ try:
         servonum = int(servonum)
         angle = input("Enter angle")
         angle = int(angle)
-        sc.goto(servonum, angle, 100, True)
+
+        if servonum == 2 and angle > 0:
+            sc.goto(2, -angle, 100, True)
         time.sleep(1)
 
 except:
