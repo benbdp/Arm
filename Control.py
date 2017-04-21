@@ -30,6 +30,7 @@ def can_move(list):
         print(i,sc.is_moving(i))
         if sc.is_moving(i) == True:
             return False
+    return True
 
 
 servos = [2,3,4]
