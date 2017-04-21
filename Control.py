@@ -16,6 +16,10 @@ def servo3(pos):
     sc.goto(3, pos, 100, True)
 
 def servo4(pos):
+    if pos < 0:
+        print("should move below")
+    elif pos > 0:
+        print("should move above")
     sc.goto(4, pos, 100, True)
 
 
