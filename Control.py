@@ -17,10 +17,10 @@ def servo3(pos):
 
 def servo4(pos):
     if pos < 0:
-        pos = -pos
+        pos = abs(pos)
         print("should move below")
     elif pos > 0:
-        pos = abs(pos)
+        pos = -pos
         print("should move above")
 
     elif pos == 0:
