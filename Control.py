@@ -1,5 +1,5 @@
 from pyax12.connection import Connection
-import time
+import numpy as np
 
 sc = Connection(port='/dev/ttyACM0', baudrate=1000000)
 
@@ -57,10 +57,16 @@ def servo4pos():
         return pos
 
 
+def endx(leg1,joint1,leg2,joint2,leg3,joint3):
+    x = leg1*np.cos(joint1)+leg2*np.cos(joint1+joint2)+leg3*np.cos(joint1+joint2+joint3)
+    return(x)
 
+def endy(leg1,joint1,leg2,joint2,leg3,joint3):
+    y = leg1*np.sin(joint1)+leg2*np.sin(joint1+joint2)+leg3*np.sin(joint1+joint2+joint3)
+    y = y + 4.2 # vertical offset
+    return(y)
 
 servos = [2,3,4]
-
 
 try:
     working = False
@@ -71,6 +77,7 @@ try:
     while working:
         if can_move(servos) == True:
             print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
+            print("x: ",endx(12.3,servo2pos(),14.8,servo3pos(),13.8,servo4pos()),"y: ",endy(12.3,servo2pos(),14.8,servo3pos(),13.8,servo4pos()))
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
