@@ -44,7 +44,7 @@ try:
 
     while working:
         if can_move(servos) == True:
-            print("Servo2: ", position(2), " Servo3: ", position(3), " Servo4: ", position(3))
+            print(sc.get_present_position(2,True))
             servonum = input("Enter servo num: ")
             servonum = int(servonum)
             angle = input("Enter angle: ")
