@@ -42,7 +42,7 @@ try:
         angle = input("Enter angle")
         angle = int(angle)
 
-        servo4(angle)
+        servo3(angle)
 
         #
         # if servonum == 2:
