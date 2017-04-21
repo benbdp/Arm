@@ -41,10 +41,10 @@ try:
         if servonum == 2:
             servo2(angle)
 
-        elif servonum == 3:
+        if servonum == 3:
             servo3(angle)
 
-        elif servonum == 4:
+        if servonum == 4:
             servo4(angle)
 
         time.sleep(1)
