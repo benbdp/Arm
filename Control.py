@@ -31,7 +31,7 @@ def can_move(list):
             return False
     return True
 def position(num):
-    sc.get_present_position(num)
+    sc.get_present_position(num,True)
 
 servos = [2,3,4]
 
