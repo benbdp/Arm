@@ -32,22 +32,22 @@ try:
         print("working")
 
     while working:
-        servonum = input("Enter servo num: ")
-        servonum = int(servonum)
-        angle = input("Enter angle: ")
-        angle = int(angle)
+        if sc.is_moving(4) == False:
+            servonum = input("Enter servo num: ")
+            servonum = int(servonum)
+            angle = input("Enter angle: ")
+            angle = int(angle)
 
-        if servonum == 2:
-            servo2(angle)
+            if servonum == 2:
+                servo2(angle)
 
-        elif servonum == 3:
-            servo3(angle)
+            elif servonum == 3:
+                servo3(angle)
 
-        elif servonum == 4:
-            servo4(angle)
-
-        print(sc.is_moving(servonum))
-        time.sleep(1)
+            elif servonum == 4:
+                servo4(angle)
+        else:
+            print("servo moving")
 
 except:
     print("not working")
