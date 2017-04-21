@@ -58,11 +58,11 @@ def servo4pos():
 
 
 def endx(leg1,joint1,leg2,joint2,leg3,joint3):
-    x = leg1*np.cos(joint1)+leg2*np.cos(joint1+joint2)+leg3*np.cos(joint1+joint2+joint3)
+    x = (leg1*np.cos(joint1))+(leg2*np.cos(joint1+joint2))+(leg3*np.cos(joint1+joint2+joint3))
     return(x)
 
 def endy(leg1,joint1,leg2,joint2,leg3,joint3):
-    y = leg1*np.sin(joint1)+leg2*np.sin(joint1+joint2)+leg3*np.sin(joint1+joint2+joint3)
+    y = (leg1*np.sin(joint1))+(leg2*np.sin(joint1+joint2))+(leg3*np.sin(joint1+joint2+joint3))
     y = y + 4.2 # vertical offset
     return(y)
 
