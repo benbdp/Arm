@@ -5,14 +5,13 @@ sc = Connection(port='/dev/ttyACM0', baudrate=1000000)
 
 
 def servo2(pos):
-    if pos > 0:
-        pos = -pos
-
-    elif angle < 0:
-        pos = 90
+    if angle < 0:
+        pos = -90
         print("illegal pos")
 
 
+    elif pos > 0:
+        pos = -pos
 
     elif pos == 0:
         print("is zero")
