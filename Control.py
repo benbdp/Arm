@@ -35,9 +35,9 @@ try:
         print("working")
 
     while working:
-        servonum = input("Enter servo num")
+        servonum = input("Enter servo num: ")
         servonum = int(servonum)
-        angle = input("Enter angle")
+        angle = input("Enter angle: ")
         angle = int(angle)
 
         if servonum == 2:
