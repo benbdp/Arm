@@ -65,7 +65,7 @@ def moveAnyServo(num,pos):
 
 
 if __name__ == "__main__":
-    servo_num = 2
+    servo_num = 4
     while True:
         key = read_single_keypress()
         if key == 'q':
