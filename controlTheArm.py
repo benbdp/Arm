@@ -81,6 +81,7 @@ if __name__ == "__main__":
     servo_num = 4
     while True:
         key = read_single_keypress()
+        print(sc.get_present_position, True);
         if key == 'q':
             break
         if key == 'w':
