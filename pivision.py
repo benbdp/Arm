@@ -24,18 +24,18 @@ gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
 edges = cv2.Canny(gray,100,200)
-#
-# circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 200)
-#
-# circles = np.uint16(np.around(circles))
-# for i in circles[0,:]:
-#     # draw the outer circle
-#     cv2.circle(image,(i[0],i[1]),i[2],(0,255,0),2)
-#     # draw the center of the circle
-#     cv2.circle(image,(i[0],i[1]),2,(0,0,255),3)
-#
-# cv2.imshow('detected circles',image)
-# #
+
+circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 100)
+if circles is not None:
+    # convert the (x, y) coordinates and radius of the circles to integers
+    circles = np.round(circles[0, :]).astype("int")
+
+    # loop over the (x, y) coordinates and radius of the circles
+    for (x, y, r) in circles:
+        # draw the circle in the output image, then draw a rectangle
+        # corresponding to the center of the circle
+        cv2.circle(image, (x, y), r, (0, 255, 0), 4)
+        cv2.rectangle(image, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
 # lower = np.array([105, 145, 130])
 # upper = np.array([115, 165, 145])
 # mask = cv2.inRange(hsv, lower, upper)
@@ -85,5 +85,5 @@ edges = cv2.Canny(gray,100,200)
 cv2.imshow("gray",gray)
 cv2.imshow("edge",edges)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
-# cv2.imshow("Image", image)
+cv2.imshow("Image", image)
 cv2.waitKey(0)
