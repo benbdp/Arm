@@ -81,13 +81,13 @@ if __name__ == "__main__":
     servo_num = 4
     while True:
         key = read_single_keypress()
-        
+        #plus and minus vary between servos!!!! right now I'll fix it to work for 4
         if key == 'q':
             break
         if key == 'w':
-            smartMove(servo_num, sc.get_present_position(servo_num, True) + 13)
-        if key == 's':
             smartMove(servo_num, sc.get_present_position(servo_num, True) - 13)
+        if key == 's':
+            smartMove(servo_num, sc.get_present_position(servo_num, True) + 13)
         if key == '2':
             servo_num = 2;
         if key == '3':
