@@ -24,8 +24,7 @@ hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 lower = np.array([90, 155, 75])
 upper = np.array([105, 165, 85])
 mask = cv2.inRange(hsv, lower, upper)
-dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=6)
-erode = cv2.erode(dilation, np.ones((5, 5), np.uint8), iterations=6)
+
 
 
 im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -65,8 +64,8 @@ distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
 
 print("distance in mm: ",distance)
 
-cv2.imshow("erode",erode)
-# cv2.imshow("mask",mask)
+#cv2.imshow("erode",erode)
+cv2.imshow("mask",mask)
 # cv2.imshow("hsv",hsv)
 cv2.imshow("Image", image)
 cv2.waitKey(0)
