@@ -81,20 +81,20 @@ if __name__ == "__main__":
     servo_num = 4
     while True:
         key = read_single_keypress()
-        print(sc.get_present_position, True);
+        
         if key == 'q':
             break
         if key == 'w':
-            smartMove(servo_num, sc.get_present_position(servo_num, True) + 13)
+            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) + 13)
         if key == 's':
-            smartMove(servo_num, sc.get_present_position(servo_num, True) - 13)
+            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) - 13)
         if key == '2':
             servo_num = 2;
         if key == '3':
             servo_num = 3;
         if key == '4':
             servo_num = 4;
-        print('You presssed ', key)
+        print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
         
         
         
