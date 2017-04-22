@@ -44,9 +44,9 @@ print("center: ",center,"radius: ",radius)
 area = 3.14 * (radius ** 2)
 print("area: ", area)
 
-center = int(center)
+center = round(center,3)
 
-radius = int(radius)
+radius = round(radius,3)
 cv2.circle(image,center,radius,(0, 255, 0), 3)
 
 cv2.imshow("erode",erode)
