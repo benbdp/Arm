@@ -71,9 +71,9 @@ if __name__ == "__main__":
         if key == 'q':
             break
         if key == 'w':
-            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) + 1)
+            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) + 5)
         if key == 's':
-            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) - 1)
+            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) - 5)
         if key == '2':
             servo_num = 2;
         if key == '3':
