@@ -145,7 +145,6 @@ if __name__ == "__main__":
                 print(inversek(tx, ty, leg1, leg2, leg3, eo))
             else:
                 print("servo moving")
-
     except:
         print("not working")
         sc.close()
