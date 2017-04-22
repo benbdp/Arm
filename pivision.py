@@ -21,8 +21,8 @@ image = rawCapture.array
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 
-lower = np.array([90, 155, 75])
-upper = np.array([105, 165, 85])
+lower = np.array([85, 150, 70])
+upper = np.array([110, 170, 90])
 mask = cv2.inRange(hsv, lower, upper)
 
 #
