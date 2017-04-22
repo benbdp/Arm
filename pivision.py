@@ -25,44 +25,44 @@ lower = np.array([90, 155, 75])
 upper = np.array([105, 165, 85])
 mask = cv2.inRange(hsv, lower, upper)
 
-
-
-im2, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-newcontours = []
-for cnt in contours:
-    area = cv2.contourArea(cnt)
-    if area > 1300:
-        newcontours.append(cnt)
-        area = cv2.contourArea(cnt)
-        print(area)
-
-center,radius = cv2.minEnclosingCircle(newcontours[0])
 #
-# print("center: ",center,"radius: ",radius)
 #
-# area = 3.14 * (radius ** 2)
-# print("area: ", area)
+# im2, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+# newcontours = []
+# for cnt in contours:
+#     area = cv2.contourArea(cnt)
+#     if area > 1300:
+#         newcontours.append(cnt)
+#         area = cv2.contourArea(cnt)
+#         print(area)
 #
-# centerx = center[0]
+# center,radius = cv2.minEnclosingCircle(newcontours[0])
+# #
+# # print("center: ",center,"radius: ",radius)
+# #
+# # area = 3.14 * (radius ** 2)
+# # print("area: ", area)
+# #
+# # centerx = center[0]
+# #
+# # centerx = int(centerx)
+# #
+# # centery = center[1]
+# #
+# # centery = int(centery)
+# #
+# # radius = int(radius)
+# # cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
 #
-# centerx = int(centerx)
+# objectrealmm = 50.8
+# focallen = 3.04
+# sensorh = 2.760
+# h, w = image.shape[:2]
+# #distance_mm = objectrealmm * focallen / objsize
 #
-# centery = center[1]
+# distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
 #
-# centery = int(centery)
-#
-# radius = int(radius)
-# cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
-
-objectrealmm = 50.8
-focallen = 3.04
-sensorh = 2.760
-h, w = image.shape[:2]
-#distance_mm = objectrealmm * focallen / objsize
-
-distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
-
-print("distance in mm: ",distance)
+# print("distance in mm: ",distance)
 
 #cv2.imshow("erode",erode)
 cv2.imshow("mask",mask)
