@@ -5,6 +5,7 @@ import time
 import cv2
 import numpy as np
 
+
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 rawCapture = PiRGBArray(camera)
