@@ -23,7 +23,8 @@ hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 lower = np.array([105, 145, 130])
 upper = np.array([115, 165, 145])
 mask = cv2.inRange(hsv, lower, upper)
-
+dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=1)
+erode = cv2.erode(dilation, np.ones((5, 5), np.uint8), iterations=1)
 
 
 im2, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -63,7 +64,7 @@ for cnt in contours:
 #
 # print("distance in mm: ",distance)
 
-#cv2.imshow("erode",erode)
+cv2.imshow("erode",erode)
 cv2.imshow("mask",mask)
 cv2.imshow("hsv",hsv)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
