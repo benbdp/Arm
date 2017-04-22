@@ -26,6 +26,17 @@ upper = np.array([105, 165, 85])
 mask = cv2.inRange(hsv, lower, upper)
 dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=6)
 erode = cv2.erode(dilation, np.ones((5, 5), np.uint8), iterations=6)
+
+
+im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+newcontours = []
+for cnt in contours:
+    area = cv2.contourArea(cnt)
+    if area > 2:
+        newcontours.append(cnt)
+        area = cv2.contourArea(cnt)
+        print(area)
+
 cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
 # cv2.imshow("hsv",hsv)
