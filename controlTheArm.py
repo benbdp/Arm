@@ -81,7 +81,7 @@ def optimalPosDiff(servonum):
     if(servonum == 3):
         return 10;
     if(servonum == 2):
-        return 5;
+        return 8;
 
 
 
