@@ -64,14 +64,14 @@ def moveAnyServo(num,pos):
 #us going over
 def smartMove(num, pos):
     if(num == 4):
-        if(pos < 1023 and pos > 0):
+        if(pos < 150 and pos > -150):
             sc.goto(4, pos, 70)
     if(num == 3):
-        if(pos < 1023 and pos > 0):
+        if(pos < 150 and pos > -150):
             sc.goto(3, pos, 50)
             
     if(num == 2):
-        if(pos < 1023 and pos > 0):
+        if(pos < 150 and pos > -150):
             sc.goto(2, pos, 30)
             
 
@@ -85,9 +85,9 @@ if __name__ == "__main__":
         if key == 'q':
             break
         if key == 'w':
-            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) + 13)
+            smartMove(servo_num, sc.get_present_position(servo_num, True) + 13)
         if key == 's':
-            moveAnyServo(servo_num, sc.get_present_position(servo_num, True) - 13)
+            smartMove(servo_num, sc.get_present_position(servo_num, True) - 13)
         if key == '2':
             servo_num = 2;
         if key == '3':
