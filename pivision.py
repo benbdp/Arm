@@ -38,22 +38,32 @@ for cnt in contours:
         print(area)
 
 center,radius = cv2.minEnclosingCircle(newcontours[0])
+#
+# print("center: ",center,"radius: ",radius)
+#
+# area = 3.14 * (radius ** 2)
+# print("area: ", area)
+#
+# centerx = center[0]
+#
+# centerx = int(centerx)
+#
+# centery = center[1]
+#
+# centery = int(centery)
+#
+# radius = int(radius)
+# cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
 
-print("center: ",center,"radius: ",radius)
+objectrealmm = 50.8
+focallen = 3.04
+sensorh = 2.760
+h, w = image.shape[:2]
+#distance_mm = objectrealmm * focallen / objsize
 
-area = 3.14 * (radius ** 2)
-print("area: ", area)
+distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
 
-centerx = center[0]
-
-centerx = int(centerx)
-
-centery = center[1]
-
-centery = int(centery)
-
-radius = int(radius)
-cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
+print("distance in mm: ",distance)
 
 cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
