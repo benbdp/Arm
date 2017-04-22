@@ -4,7 +4,7 @@ import numpy as np
 
 leg1 = 12.3
 leg2 = 14.8  # lengths of legs in cm
-leg3 = 13.8
+leg3 = 13.833
 
 # find wrist positions
 def wristposx(tx,leg3,eo):

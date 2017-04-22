@@ -21,11 +21,11 @@ image = rawCapture.array
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 #hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
+# blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+# thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
 
 #
-# edges = cv2.Canny(gray,100,200)
+edges = cv2.Canny(gray,100,200)
 #
 # circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 100)
 # if circles is not None:
@@ -86,7 +86,7 @@ thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
 # cv2.imshow("mask",mask)
 cv2.imshow("gray",gray)
 # cv2.imshow("edge",edges)
-cv2.imshow("thresh",thresh)
+#cv2.imshow("thresh",thresh)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
 cv2.imshow("Image", image)
 cv2.waitKey(0)
