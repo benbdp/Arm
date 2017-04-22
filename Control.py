@@ -68,36 +68,44 @@ def endy(leg1,joint1,leg2,joint2,leg3,joint3):  # calculate the y value of the e
 
 servos = [2,3,4]
 
-try:
-    working = False
-    if (sc.ping(2) == True): # test the connection
-        working = True
-        print("working")
+if __name__ == "__main__":
+    try:
+        working = False
+        if (sc.ping(2) == True):  # test the connection
+            working = True
+            print("working")
+        # TODO: Inverse Kinematics
+        while working:
+            if can_move(servos) == True:
+                leg1 = 12.3
+                leg2 = 14.8  # lengths of legs in cm
+                leg3 = 13.8
+                print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
+                print("x: ",(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos())))  # print distance from origin
+                print("y: ", (endy(leg1, servo2pos(), leg2, servo3pos(), leg3, servo4pos())))  # print h from base
+                # servonum = input("Enter servo num: ")
+                # servonum = int(servonum)
+                # angle = input("Enter angle: ")
+                # angle = int(angle)
+                #
+                # if servonum == 2:
+                #     servo2(angle)
+                #
+                # elif servonum == 3:
+                #     servo3(angle)
+                #
+                # elif servonum == 4:
+                #     servo4(angle)
 
-    while working:
-        if can_move(servos) == True:
-            leg1 = 12.3
-            leg2 = 14.8
-            leg3 = 13.8
-            print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
-            print("x: ",(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos())))
-            print("y: ", (endy(leg1, servo2pos(), leg2, servo3pos(), leg3, servo4pos())))
-            servonum = input("Enter servo num: ")
-            servonum = int(servonum)
-            angle = input("Enter angle: ")
-            angle = int(angle)
+                tx = int(input("Enter Target X: "))
+                ty = int(input("Enter Target Y: "))
+                eo = int(input("Enter End-effector Orientation: "))
 
-            if servonum == 2:
-                servo2(angle)
+                print(tx,ty)
 
-            elif servonum == 3:
-                servo3(angle)
+            else:
+                print("servo moving")
 
-            elif servonum == 4:
-                servo4(angle)
-        else:
-            print("servo moving")
-
-except:
-    print("not working")
-    sc.close()
+    except:
+        print("not working")
+        sc.close()
