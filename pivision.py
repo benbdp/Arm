@@ -3,6 +3,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 import cv2
+import numpy as np
 
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
@@ -19,7 +20,12 @@ image = rawCapture.array
 
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-cv2.imwrite("/home/pi/hsv.png",hsv)
+
+lower = np.array([90, 155, 75])
+upper = np.array([105, 165, 85])
+mask = cv2.inRange(hsv, lower, upper)
+cv2.imshow("mask",mask)
+#cv2.imwrite("/home/pi/hsv.png",hsv)
 
 # display the image on screen and wait for a keypress
 cv2.imshow("hsv",hsv)
