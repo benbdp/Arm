@@ -19,6 +19,7 @@ image = rawCapture.array
 
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
+cv2.imwrite("/home/pi/hsv.png",hsv)
 
 # display the image on screen and wait for a keypress
 cv2.imshow("hsv",hsv)
