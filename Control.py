@@ -125,24 +125,24 @@ if __name__ == "__main__":
                 print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
                 print("x: ",(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos())))  # print distance from origin
                 print("y: ", (endy(leg1, servo2pos(), leg2, servo3pos(), leg3, servo4pos())))  # print h from base
-                # servonum = input("Enter servo num: ")
-                # servonum = int(servonum)
-                # angle = input("Enter angle: ")
-                # angle = int(angle)
-                #
-                # if servonum == 2:
-                #     servo2(angle)
-                #
-                # elif servonum == 3:
-                #     servo3(angle)
-                #
-                # elif servonum == 4:
-                #     servo4(angle)
+                servonum = input("Enter servo num: ")
+                servonum = int(servonum)
+                angle = input("Enter angle: ")
+                angle = int(angle)
 
-                tx = int(input("Enter Target X: "))
-                ty = int(input("Enter Target Y: "))
-                eo = int(input("Enter End-effector Orientation: "))
-                print(inversek(tx, ty, leg1, leg2, leg3, eo))
+                if servonum == 2:
+                    servo2(angle)
+
+                elif servonum == 3:
+                    servo3(angle)
+
+                elif servonum == 4:
+                    servo4(angle)
+
+                # tx = int(input("Enter Target X: "))
+                # ty = int(input("Enter Target Y: "))
+                # eo = int(input("Enter End-effector Orientation: "))
+                # print(inversek(tx, ty, leg1, leg2, leg3, eo))
             else:
                 print("servo moving")
     except:

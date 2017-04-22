@@ -2,17 +2,9 @@ import numpy as np
 
 # inputs
 
-leg1 = 30
-
-leg2 = 20
-
-leg3 = 10
-
-eo = 0 # enter degrees
-
-tx = 25.737
-
-ty = 42.221
+leg1 = 12.3
+leg2 = 14.8  # lengths of legs in cm
+leg3 = 13.8
 
 # find wrist positions
 def wristposx(tx,leg3,eo):
@@ -24,26 +16,10 @@ def wristposx(tx,leg3,eo):
         xw = tx + leg3 * (np.cos(eo))
         return xw
 
-print("xw: ",wristposx(tx,leg3,eo))
-
 def wristposy(ty,leg3,eo):
     eo = np.deg2rad(eo)
     yw = ty-leg3*(np.sin(eo))
     return yw
-
-
-
-print("yw: ",wristposy(ty,leg3,eo))
-
-# calculate angle a
-
-
-
-
-#a = np.degrees(a)
-
-#print(a)
-
 
 # theta one
 def joint1(xw,yw,leg1,leg2):
@@ -76,3 +52,9 @@ def inversek(tx,ty,leg1, leg2, leg3, eo):
     t3 = np.degrees(joint3(wristposx(tx, leg3, eo), wristposy(ty, leg3, eo), leg1, leg2, eo))
 
     return t1, t2, t3
+
+
+tx = int(input("Enter Target X: "))
+ty = int(input("Enter Target Y: "))
+eo = int(input("Enter End-effector Orientation: "))
+print(inversek(tx, ty, leg1, leg2, leg3, eo))
