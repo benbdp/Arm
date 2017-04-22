@@ -37,6 +37,10 @@ for cnt in contours:
         area = cv2.contourArea(cnt)
         print(area)
 
+center,radius = cv2.minEnclosingCircle(newcontours[0])
+
+print("center: ",center,"radius: ",radius)
+
 cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
 # cv2.imshow("hsv",hsv)
