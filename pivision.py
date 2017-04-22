@@ -24,48 +24,48 @@ lower = np.array([105, 145, 130])
 upper = np.array([115, 165, 145])
 mask = cv2.inRange(hsv, lower, upper)
 
+
+
+im2, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+newcontours = []
+for cnt in contours:
+    area = cv2.contourArea(cnt)
+    if area > 1300:
+        newcontours.append(cnt)
+        area = cv2.contourArea(cnt)
+        print(area)
+
+center,radius = cv2.minEnclosingCircle(newcontours[0])
 #
+# print("center: ",center,"radius: ",radius)
 #
-# im2, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-# newcontours = []
-# for cnt in contours:
-#     area = cv2.contourArea(cnt)
-#     if area > 1300:
-#         newcontours.append(cnt)
-#         area = cv2.contourArea(cnt)
-#         print(area)
+# area = 3.14 * (radius ** 2)
+# print("area: ", area)
 #
-# center,radius = cv2.minEnclosingCircle(newcontours[0])
-# #
-# # print("center: ",center,"radius: ",radius)
-# #
-# # area = 3.14 * (radius ** 2)
-# # print("area: ", area)
-# #
-# # centerx = center[0]
-# #
-# # centerx = int(centerx)
-# #
-# # centery = center[1]
-# #
-# # centery = int(centery)
-# #
-# # radius = int(radius)
-# # cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
-#
-# objectrealmm = 50.8
-# focallen = 3.04
-# sensorh = 2.760
-# h, w = image.shape[:2]
-# #distance_mm = objectrealmm * focallen / objsize
-#
-# distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
-#
-# print("distance in mm: ",distance)
+centerx = center[0]
+
+centerx = int(centerx)
+
+centery = center[1]
+
+centery = int(centery)
+
+radius = int(radius)
+cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
+
+objectrealmm = 50.8
+focallen = 3.04
+sensorh = 2.760
+h, w = image.shape[:2]
+#distance_mm = objectrealmm * focallen / objsize
+
+distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
+
+print("distance in mm: ",distance)
 
 #cv2.imshow("erode",erode)
 cv2.imshow("mask",mask)
 cv2.imshow("hsv",hsv)
-cv2.imwrite("/home/pi/hsv.png",hsv)
-#cv2.imshow("Image", image)
+# cv2.imwrite("/home/pi/hsv.png",hsv)
+cv2.imshow("Image", image)
 cv2.waitKey(0)
