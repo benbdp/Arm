@@ -17,6 +17,10 @@ time.sleep(0.1)
 camera.capture(rawCapture, format="bgr")
 image = rawCapture.array
 
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+
 # display the image on screen and wait for a keypress
+cv2.imshow("hsv",hsv)
 cv2.imshow("Image", image)
 cv2.waitKey(0)
