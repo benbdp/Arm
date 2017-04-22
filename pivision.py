@@ -21,22 +21,23 @@ image = rawCapture.array
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 #hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
 
-
-
-edges = cv2.Canny(gray,100,200)
-
-circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 100)
-if circles is not None:
-    # convert the (x, y) coordinates and radius of the circles to integers
-    circles = np.round(circles[0, :]).astype("int")
-
-    # loop over the (x, y) coordinates and radius of the circles
-    for (x, y, r) in circles:
-        # draw the circle in the output image, then draw a rectangle
-        # corresponding to the center of the circle
-        cv2.circle(image, (x, y), r, (0, 255, 0), 4)
-        cv2.rectangle(image, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
+#
+# edges = cv2.Canny(gray,100,200)
+#
+# circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 100)
+# if circles is not None:
+#     # convert the (x, y) coordinates and radius of the circles to integers
+#     circles = np.round(circles[0, :]).astype("int")
+#
+#     # loop over the (x, y) coordinates and radius of the circles
+#     for (x, y, r) in circles:
+#         # draw the circle in the output image, then draw a rectangle
+#         # corresponding to the center of the circle
+#         cv2.circle(image, (x, y), r, (0, 255, 0), 4)
+#         cv2.rectangle(image, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
 # lower = np.array([105, 145, 130])
 # upper = np.array([115, 165, 145])
 # mask = cv2.inRange(hsv, lower, upper)
@@ -84,7 +85,8 @@ if circles is not None:
 # cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
 cv2.imshow("gray",gray)
-cv2.imshow("edge",edges)
+# cv2.imshow("edge",edges)
+cv2.imshow("thresh",thresh)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
 cv2.imshow("Image", image)
 cv2.waitKey(0)
