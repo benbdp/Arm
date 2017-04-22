@@ -35,33 +35,33 @@ for cnt in contours:
         area = cv2.contourArea(cnt)
         print(area)
 
-center,radius = cv2.minEnclosingCircle(newcontours[0])
+# center,radius = cv2.minEnclosingCircle(newcontours[0])
+# #
+# # print("center: ",center,"radius: ",radius)
+# #
+# # area = 3.14 * (radius ** 2)
+# # print("area: ", area)
+# #
+# centerx = center[0]
 #
-# print("center: ",center,"radius: ",radius)
+# centerx = int(centerx)
 #
-# area = 3.14 * (radius ** 2)
-# print("area: ", area)
+# centery = center[1]
 #
-centerx = center[0]
-
-centerx = int(centerx)
-
-centery = center[1]
-
-centery = int(centery)
-
-radius = int(radius)
-cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
-
-objectrealmm = 50.8
-focallen = 3.04
-sensorh = 2.760
-h, w = image.shape[:2]
-#distance_mm = objectrealmm * focallen / objsize
-
-distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
-
-print("distance in mm: ",distance)
+# centery = int(centery)
+#
+# radius = int(radius)
+# cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
+#
+# objectrealmm = 50.8
+# focallen = 3.04
+# sensorh = 2.760
+# h, w = image.shape[:2]
+# #distance_mm = objectrealmm * focallen / objsize
+#
+# distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
+#
+# print("distance in mm: ",distance)
 
 #cv2.imshow("erode",erode)
 cv2.imshow("mask",mask)
