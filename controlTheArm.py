@@ -57,8 +57,8 @@ def read_single_keypress():
         fcntl.fcntl(fd, fcntl.F_SETFL, flags_save)
     return ret
 
-def moveAnyServo(num,pos, speed):
-    sc.goto(num, pos, speed, True)
+def moveAnyServo(num,pos):
+    sc.goto(num, pos, 70, True)
     
 #method for moving the joints with *some safety*. range is between 0 and 1023, so this will save
 #us going over
