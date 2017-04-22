@@ -82,7 +82,7 @@ cv2.imshow('detected circles',image)
 
 # cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
-cv2.imshow("hsv",hsv)
+cv2.imshow("gray",gray)
 cv2.imshow("edge",edges)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
 # cv2.imshow("Image", image)
