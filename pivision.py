@@ -44,8 +44,10 @@ print("center: ",center,"radius: ",radius)
 area = 3.14 * (radius ** 2)
 print("area: ", area)
 
+cv2.circle(image,int(center),int(radius),(0, 255, 0), 3)
+
 cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
 # cv2.imshow("hsv",hsv)
-# cv2.imshow("Image", image)
+cv2.imshow("Image", image)
 cv2.waitKey(0)
