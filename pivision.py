@@ -27,7 +27,7 @@ mask = cv2.inRange(hsv, lower, upper)
 
 
 
-im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+im2, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 newcontours = []
 for cnt in contours:
     area = cv2.contourArea(cnt)
