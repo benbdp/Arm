@@ -18,13 +18,14 @@ time.sleep(0.1)
 camera.capture(rawCapture, format="bgr")
 image = rawCapture.array
 
-hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 
 
-edges = cv2.Canny(hsv,100,200)
+edges = cv2.Canny(gray,100,200)
 
-circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 300)
+circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 200)
 
 circles = np.uint16(np.around(circles))
 for i in circles[0,:]:
