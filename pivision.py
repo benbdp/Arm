@@ -20,10 +20,9 @@ image = rawCapture.array
 
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-#
-# lower = np.array([85, 150, 75])
-# upper = np.array([110, 170, 85])
-# mask = cv2.inRange(hsv, lower, upper)
+lower = np.array([5, 110, 45])
+upper = np.array([20, 140, 70])
+mask = cv2.inRange(hsv, lower, upper)
 
 #
 #
@@ -65,8 +64,8 @@ hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 # print("distance in mm: ",distance)
 
 #cv2.imshow("erode",erode)
-#cv2.imshow("mask",mask)
-cv2.imshow("hsv",hsv)
-cv2.imwrite("/home/pi/hsv.png",hsv)
+cv2.imshow("mask",mask)
+#cv2.imshow("hsv",hsv)
+#cv2.imwrite("/home/pi/hsv.png",hsv)
 #cv2.imshow("Image", image)
 cv2.waitKey(0)
