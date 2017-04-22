@@ -85,9 +85,9 @@ if __name__ == "__main__":
         if key == 'q':
             break
         if key == 'w':
-            smartMove(servo_num, sc.get_present_position(servo_num, True) - 13)
-        if key == 's':
             smartMove(servo_num, sc.get_present_position(servo_num, True) + 13)
+        if key == 's':
+            smartMove(servo_num, sc.get_present_position(servo_num, True) - 13)
         if key == '2':
             servo_num = 2;
         if key == '3':
