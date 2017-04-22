@@ -74,6 +74,14 @@ def smartMove(num, pos):
         if(pos < 150 and pos > -150):
             sc.goto(2, pos, 30, True)
             
+#little thing to decide the 'diff' in main for smartmove
+def optimalPosDiff(servonum):
+    if(servonum == 4):
+        return -13;
+    if(servonum == 3):
+        return 10;
+    if(servonum == 2):
+        return 5;
 
 
 
@@ -85,9 +93,9 @@ if __name__ == "__main__":
         if key == 'q':
             break
         if key == 'w':
-            smartMove(servo_num, sc.get_present_position(servo_num, True) + 13)
+            smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
         if key == 's':
-            smartMove(servo_num, sc.get_present_position(servo_num, True) - 13)
+            smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
         if key == '2':
             servo_num = 2;
         if key == '3':
