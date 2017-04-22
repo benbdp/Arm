@@ -23,6 +23,19 @@ hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 
 edges = cv2.Canny(hsv,100,200)
+
+
+
+circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1,20, param1=50,param2=30,minRadius=0,maxRadius=0)
+
+circles = np.uint16(np.around(circles))
+for i in circles[0,:]:
+    # draw the outer circle
+    cv2.circle(image,(i[0],i[1]),i[2],(0,255,0),2)
+    # draw the center of the circle
+    cv2.circle(image,(i[0],i[1]),2,(0,0,255),3)
+
+cv2.imshow('detected circles',image)
 #
 # lower = np.array([105, 145, 130])
 # upper = np.array([115, 165, 145])
@@ -73,5 +86,5 @@ edges = cv2.Canny(hsv,100,200)
 cv2.imshow("hsv",hsv)
 cv2.imshow("edge",edges)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
-cv2.imshow("Image", image)
+# cv2.imshow("Image", image)
 cv2.waitKey(0)
