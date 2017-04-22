@@ -65,14 +65,14 @@ def moveAnyServo(num,pos):
 def smartMove(num, pos):
     if(num == 4):
         if(pos < 150 and pos > -150):
-            sc.goto(4, pos, 70)
+            sc.goto(4, pos, 70, True)
     if(num == 3):
         if(pos < 150 and pos > -150):
-            sc.goto(3, pos, 50)
+            sc.goto(3, pos, 50, True)
             
     if(num == 2):
         if(pos < 150 and pos > -150):
-            sc.goto(2, pos, 30)
+            sc.goto(2, pos, 30, True)
             
 
 
