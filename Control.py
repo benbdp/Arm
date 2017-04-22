@@ -57,13 +57,13 @@ def servo4pos():
         return pos
 
 
-def endx(leg1,joint1,leg2,joint2,leg3,joint3):
+def endx(leg1,joint1,leg2,joint2,leg3,joint3):  # calculate the x value of the end effector
     x = (leg1*np.cos(np.deg2rad(joint1)))+(leg2*np.cos(np.deg2rad(joint1+joint2)))+(leg3*np.cos(np.deg2rad(joint1+joint2+joint3)))
     return(x)
 
-def endy(leg1,joint1,leg2,joint2,leg3,joint3):
+def endy(leg1,joint1,leg2,joint2,leg3,joint3):  # calculate the y value of the end effector
     y = (leg1*np.sin(np.deg2rad(joint1)))+(leg2*np.sin(np.deg2rad(joint1+joint2)))+(leg3*np.sin(np.deg2rad(joint1+joint2+joint3)))
-    y = y + 4.2 # vertical offset
+    y = y + 4.2  # vertical offset
     return(y)
 
 servos = [2,3,4]

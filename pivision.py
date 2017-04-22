@@ -8,6 +8,8 @@ import cv2
 camera = PiCamera()
 rawCapture = PiRGBArray(camera)
 
+camera.rotation = 180
+
 # allow the camera to warmup
 time.sleep(0.1)
 
