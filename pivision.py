@@ -32,7 +32,7 @@ im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPR
 newcontours = []
 for cnt in contours:
     area = cv2.contourArea(cnt)
-    if area > 200:
+    if area > 1300:
         newcontours.append(cnt)
         area = cv2.contourArea(cnt)
         print(area)
