@@ -44,10 +44,16 @@ print("center: ",center,"radius: ",radius)
 area = 3.14 * (radius ** 2)
 print("area: ", area)
 
-center = round(center,3)
+centerx = center[0]
 
-radius = round(radius,3)
-cv2.circle(image,center,radius,(0, 255, 0), 3)
+centerx = int(centerx)
+
+centery = center[1]
+
+centery = int(centery)
+
+radius = int(radius)
+cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
 
 cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
