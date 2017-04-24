@@ -85,10 +85,10 @@ def optimalPosDiff(servonum):
     if(servonum == 2):
         return 8;
 
-
-def getAngleOne():
-    angleOne = sc.get_present_position(2, True)
-    return angleOne
+#method to get an angle have to negate due to how servos are mounted
+def getAngleOfServo(servo_num):
+    angle = sc.get_present_position(servo_num, True)
+    return -1 * angle
 
 def getAngleTwo():
     angleTwo = sc.get_present_position(3, True)
@@ -127,7 +127,7 @@ if __name__ == "__main__":
         if key == 'z':
             sc.goto(servo_num, 0, 70, True)
         if key == 'r':
-            print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
+            print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
         print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
         
         
