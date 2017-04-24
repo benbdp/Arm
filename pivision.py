@@ -18,7 +18,6 @@ time.sleep(0.1)
 # grab an image from the camera
 camera.capture(rawCapture, format="bgr")
 image = rawCapture.array
-
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 #hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 # blurred = cv2.GaussianBlur(gray, (5, 5), 0)
