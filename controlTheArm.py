@@ -128,7 +128,7 @@ if __name__ == "__main__":
             sc.goto(servo_num, 0, 70, True)
         if key == 'r':
             print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
-        print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
+        print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
         
         
         
