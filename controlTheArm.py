@@ -74,7 +74,8 @@ def smartMove(num, pos):
         if(pos < 150 and pos > -150):
             sc.goto(2, pos, 30, True)
             
-#little thing to decide the 'diff' in main for smartmove
+#little thing to decide the 'diff' in main for smartmove. this sets the interval to move to every keypress
+#reading. they are different values because some joints are too jerky/slow if you use one number
 def optimalPosDiff(servonum):
     if(servonum == 4):
         return -13;
@@ -82,6 +83,20 @@ def optimalPosDiff(servonum):
         return 10;
     if(servonum == 2):
         return 8;
+
+
+def getAngleOne():
+    angleOne = sc.get_present_position(2, True)
+    return angleOne
+
+def getAngleTwo():
+    angleTwo = sc.get_present_position(3, True)
+    return angleTwo
+
+def getAngleThree():
+    angleThree = sc.get_present_position(4, True)
+    return angleThree
+
 
 
 
@@ -102,6 +117,8 @@ if __name__ == "__main__":
             servo_num = 3;
         if key == '4':
             servo_num = 4;
+        if key == 't':
+            sc.goto(4, 0, 70, True)
         print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
         
         
