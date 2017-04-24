@@ -72,7 +72,8 @@ def smartMove(num, pos):
             
     if(num == 2):
         if(pos < 150 and pos > -150):
-            sc.goto(2, pos, 30, True)
+            
+            sc.goto(2, pos, -30, True)
             
 #little thing to decide the 'diff' in main for smartmove. this sets the interval to move to every keypress
 #reading. they are different values because some joints are too jerky/slow if you use one number
@@ -117,7 +118,7 @@ if __name__ == "__main__":
             servo_num = 3;
         if key == '4':
             servo_num = 4;
-        if key == 't':
+        if key == 'z':
             sc.goto(servo_num, 0, 70, True)
         if key == 'r':
             print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
