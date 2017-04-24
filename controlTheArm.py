@@ -11,6 +11,17 @@ from pyax12.connection import Connection
 
 sc = Connection(port = '/dev/ttyACM0', baudrate = 1000000)
 
+AB = 12.3
+BC = 14.8
+CD = 13.8
+vOffset = 4.2
+
+thetaOne = np.radians(90)
+thetaTwo = np.radians(0)
+thetaThree = np.radians(0)
+
+
+
 
 def read_single_keypress():
     """Waits for a single keypress on stdin.
@@ -94,15 +105,32 @@ def getAngleOfServo(servo_num):
         return angle
     
 
+def setThetaOne():
+    thetaOne = np.radians(getAngleOfServo(2))
+
+def setThetaTwo():
+    thetaTwo = np.radians(getAngleOfServo(3))
+    
+def setThetaThree():
+    thetaThree = np.radians(getAngleOfServo(4))
 
 
+def calculateX():
+    x = AB * np.cos(thetaOne) + BC* np.cos(thetaOne + thetaTwo) + CD* np.cos(thetaOne + thetaTwo + thetaThree)
+    return x
 
+def calculateY():
+    y = AB * np.sin(thetaOne) + BC* np.sin(thetaOne + thetaTwo) + CD* np.sin(thetaOne + thetaTwo + thetaThree)
+    return y + vOffset
 
 
 if __name__ == "__main__":
     servo_num = 4
     while True:
         key = read_single_keypress()
+        setThetaOne()
+        setThetaTwo()
+        setThetaThree()
         #plus and minus vary between servos!!!! right now I'll fix it to work for 4
         if key == 'q':
             break
@@ -126,6 +154,9 @@ if __name__ == "__main__":
             sc.goto(servo_num, 0, 70, True)
         if key == 'r':
             print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
+        if key == 'k':
+            print('x: ', calculateX(), ' y: ', calculateY())
+            
         print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
         
         
