@@ -119,6 +119,8 @@ if __name__ == "__main__":
             servo_num = 4;
         if key == 't':
             sc.goto(4, 0, 70, True)
+        if key == 'r':
+            print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
         print('Servo: ', servo_num, 'Position:', sc.get_present_position(servo_num, True))
         
         
