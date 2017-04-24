@@ -88,15 +88,13 @@ def optimalPosDiff(servonum):
 #method to get an angle have to negate due to how servos are mounted
 def getAngleOfServo(servo_num):
     angle = sc.get_present_position(servo_num, True)
-    return -1 * angle
+    if(servo_num == 2 or servo_num == 4):
+        return -1 * angle
+    else:
+        return angle
+    
 
-def getAngleTwo():
-    angleTwo = sc.get_present_position(3, True)
-    return angleTwo
 
-def getAngleThree():
-    angleThree = sc.get_present_position(4, True)
-    return angleThree
 
 
 
