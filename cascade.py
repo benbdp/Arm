@@ -10,7 +10,6 @@ import cv2
 apple_cascade = cv2.CascadeClassifier("/Users/Benjamin/PycharmProjects/Arm/bananacascade.xml")
 
 cap = cv2.VideoCapture(0)
-
 while 1:
     ret, img = cap.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
