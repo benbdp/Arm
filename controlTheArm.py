@@ -116,39 +116,64 @@ def getThetaThree():
     return thetaThree
 
 
-def calculateX():
+def calculateCurrentX():
     thetaOne = getThetaOne()
     thetaTwo = getThetaTwo()
     thetaThree = getThetaThree()
     x = AB * np.cos(thetaOne) + BC* np.cos(thetaOne + thetaTwo) + CD* np.cos(thetaOne + thetaTwo + thetaThree)
     return x
 
-def calculateY():
+def calculateCurrentY():
     thetaOne = getThetaOne()
     thetaTwo = getThetaTwo()
     thetaThree = getThetaThree()
     y = AB * np.sin(thetaOne) + BC* np.sin(thetaOne + thetaTwo) + CD* np.sin(thetaOne + thetaTwo + thetaThree)
     return y + vOffset
 
+#method to calculate y with parameters, used to predict next y position
+def calculateY(angleOne, angleTwo, angleThree):
+    thetaOne = angleOne
+    thetaTwo = angleTwo
+    thetaThree = angleThree
+    y = AB * np.sin(thetaOne) + BC* np.sin(thetaOne + thetaTwo) + CD* np.sin(thetaOne + thetaTwo + thetaThree)
+    return y + vOffset
+
+# little method that can be used to predict the y position after the next "tick"
+def predictY(servo_num):
+    if(servo_num ==2):
+        calculateY(np.radians(getAngleOfServo(2) + optimalPosDiff(2)), getThetaTwo(), getThetaThree())
+    elif(servo_num == 3):
+        calculateY(getThetaOne(),np.radians(getAngleOfServo(3) - optimalPosDiff(3)), getThetaThree())
+    elif(servo_num == 4):
+        calculateY(getThetaOne(),getThetaTwo(), np.radians(getAngleOfServo(4) - optimalPosDiff(4)))
+
+
+
 
 if __name__ == "__main__":
     servo_num = 4
+    safety = False
     while True:
         key = read_single_keypress()
         
         #plus and minus vary between servos!!!! right now I'll fix it to work for 4
         if key == 'q':
             break
+        #move up
         if key == 'w':
             if(servo_num == 2):
                 smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
             else:
                 smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
+        #move down
         if key == 's':
-            if(servo_num == 2):
-                smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
-            else:
-                smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
+            predicted_y = predictY(servo_num)
+            #little safety to keep us from hammering the thing into the floor
+            if(predicted_y > 15):
+                if(servo_num == 2):
+                    smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
+                else:
+                    smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
         if key == '2':
             servo_num = 2;
         if key == '3':
@@ -157,10 +182,20 @@ if __name__ == "__main__":
             servo_num = 4;
         if key == 'z':
             sc.goto(servo_num, 0, 70, True)
+        #read
         if key == 'r':
             print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
+        #forward kinematics
         if key == 'k':
-            print('x: ', calculateX(), ' y: ', calculateY())
+            print('x: ', calculateCurrentX(), ' y: ', calculateCurrentY())
+        if key == 'e':
+            if(safety == True):
+                safety = False
+            else:
+                safety = True
+            print('Safety Toggled', safety)
+            
+            
             
         print('Servo: ', servo_num, 'Position:', getAngleOfServo(servo_num))
         
