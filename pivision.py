@@ -61,6 +61,18 @@ if len >0:
 
     radius = int(radius)
     cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
+
+
+    objectrealmm = 70
+    focallen = 3.04
+    sensorh = 2.760
+    h, w = image.shape[:2]
+    #distance_mm = objectrealmm * focallen / objsize
+
+    distance = (focallen*objectrealmm*h)/((radius*2)*sensorh)
+
+    print("distance in mm: ",distance)
+
 #
 # circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 100)
 # if circles is not None:
@@ -106,8 +118,8 @@ if len >0:
 #
 # radius = int(radius)
 # cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
-#
-# objectrealmm = 50.8
+# #
+# objectrealmm = 70
 # focallen = 3.04
 # sensorh = 2.760
 # h, w = image.shape[:2]
