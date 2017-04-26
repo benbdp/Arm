@@ -18,13 +18,47 @@ time.sleep(0.1)
 # grab an image from the camera
 camera.capture(rawCapture, format="bgr")
 image = rawCapture.array
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-#hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-# blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-# thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
+blurred = cv2.GaussianBlur(image, (5, 5), 2)
+lower = np.array([0, 0, 120])
+upper = np.array([50, 5, 180])
+mask = cv2.inRange(blurred, lower, upper)
+dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=5)
+erode = cv2.erode(dilation, np.ones((5, 5), np.uint8), iterations=3)
+cv2.imshow("mask",mask)
 
-#
-edges = cv2.Canny(gray,100,200)
+cv2.imshow("erode",erode)
+cv2.imshow("dilation",dilation)
+cv2.waitKey(0)
+
+im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+len = len(contours)
+
+print("len: ",len)
+if len >0:
+
+    center,radius = cv2.minEnclosingCircle(contours[0])
+
+    # x, y, w, h = cv2.boundingRect(contours[0])
+    # cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+
+
+    #
+    # print("center: ",center,"radius: ",radius)
+    #
+    # area = 3.14 * (radius ** 2)
+    # print("area: ", area)
+    #
+    centerx = center[0]
+
+    centerx = int(centerx)
+
+    centery = center[1]
+
+    centery = int(centery)
+
+    radius = int(radius)
+    cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
 #
 # circles = cv2.HoughCircles(edges,cv2.HOUGH_GRADIENT,1.2, 100)
 # if circles is not None:
@@ -83,8 +117,6 @@ edges = cv2.Canny(gray,100,200)
 
 # cv2.imshow("erode",erode)
 # cv2.imshow("mask",mask)
-cv2.imshow("gray",gray)
-cv2.imshow("edge",edges)
 #cv2.imshow("thresh",thresh)
 # cv2.imwrite("/home/pi/hsv.png",hsv)
 cv2.imshow("Image", image)
