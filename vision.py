@@ -3,8 +3,6 @@ from picamera import PiCamera
 import time
 import cv2
 import numpy as np
-
-# img = cv2.imread("/Users/Benjamin/PycharmProjects/Arm/appletestA.jpg")
 camera = PiCamera()
 rawCapture = PiRGBArray(camera)
 
