@@ -27,6 +27,7 @@ cv2.imshow("mask",mask)
 
 cv2.imshow("erode",erode)
 cv2.imshow("dilation",dilation)
+cv2.waitKey()
 
 im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
