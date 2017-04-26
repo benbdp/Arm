@@ -31,6 +31,8 @@ cv2.imshow("dilation",dilation)
 im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
 len = len(contours)
+
+print("len: ",len)
 if len >0:
 
     center,radius = cv2.minEnclosingCircle(contours[0])
