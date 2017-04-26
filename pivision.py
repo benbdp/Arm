@@ -18,6 +18,8 @@ time.sleep(0.1)
 # grab an image from the camera
 camera.capture(rawCapture, format="bgr")
 image = rawCapture.array
+
+cv2.imwrite("/home/pi/apple.jpg",image)
 blurred = cv2.GaussianBlur(image, (5, 5), 2)
 lower = np.array([0, 0, 120])
 upper = np.array([50, 5, 180])
