@@ -24,7 +24,7 @@ def get_image():
 
 num = 0
 
-while num > 100:
+while num < 100:
     print(num)
     cv2.imwrite("/home/pi/apples/"+str(num)+".jpg",get_image())
     time.sleep(0.1)
