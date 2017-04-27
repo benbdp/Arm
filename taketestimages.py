@@ -22,8 +22,9 @@ def get_image():
     image = rawCapture.array
     return image
 
-num = 100
+num = 0
 
-for i in num:
-    cv2.imwrite("/home/pi/apples/"+str(i)+".jpg",get_image())
+while num > 100:
+    cv2.imwrite("/home/pi/apples/"+str(num)+".jpg",get_image())
     time.sleep(0.1)
+    num=+1
