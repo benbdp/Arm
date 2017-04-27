@@ -21,8 +21,11 @@ image = rawCapture.array
 
 cv2.imwrite("/home/pi/apple.jpg",image)
 blurred = cv2.GaussianBlur(image, (5, 5), 2)
-lower = np.array([0, 0, 28])
-upper = np.array([0, 0, 40])
+# lower = np.array([0, 0, 28])
+# upper = np.array([0, 0, 40])
+
+lower = np.array([25, 0, 115])
+upper = np.array([35, 5, 125])
 mask = cv2.inRange(blurred, lower, upper)
 dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=8)
 erode = cv2.erode(dilation, np.ones((5, 5), np.uint8), iterations=4)

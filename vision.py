@@ -1,24 +1,41 @@
-from picamera.array import PiRGBArray
-from picamera import PiCamera
 import time
 import cv2
 import numpy as np
-camera = PiCamera()
-rawCapture = PiRGBArray(camera)
+import sys
 
-camera.rotation = 180
 
-# allow the camera to warmup
-time.sleep(0.1)
+camera = cv2.VideoCapture(0)
+def get_image():
+    retval, img = camera.read()
+    return img
 
-# grab an image from the camera
-camera.capture(rawCapture, format="bgr")
-image = rawCapture.array
 
-blurred = cv2.GaussianBlur(image, (5, 5), 2)
-lower = np.array([0, 0, 120])
-upper = np.array([50, 5, 180])
-mask = cv2.inRange(blurred, lower, upper)
+img = get_image()
+cv2.imshow("img",img)
+newimg = cv2.cvtColor()
+blurred = cv2.GaussianBlur(img, (5, 5), 2)
+# lower = np.array([0, 0, 28])
+# upper = np.array([0, 0, 40])              #Worked on the bus
+# mask = cv2.inRange(blurred, lower, upper)
+image_blur_hsv = cv2.cvtColor(blurred, cv2.COLOR_RGB2HSV)
+
+# Filter by colour
+    # 0-10 hue
+    # minimum red amount, max red amount
+min_red = np.array([0, 100, 80])
+max_red = np.array([10, 256, 256])
+    # layer
+mask1 = cv2.inRange(image_blur_hsv, min_red, max_red)
+
+    # birghtness of a color is hue
+    # 170-180 hue
+min_red2 = np.array([170, 100, 80])
+max_red2 = np.array([180, 256, 256])
+mask2 = cv2.inRange(image_blur_hsv, min_red2, max_red2)
+
+    # looking for what is in both ranges
+    # Combine masks
+mask = mask1 + mask2
 dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=5)
 erode = cv2.erode(dilation, np.ones((5, 5), np.uint8), iterations=3)
 cv2.imshow("mask",mask)
@@ -29,12 +46,18 @@ cv2.waitKey()
 
 im2, contours, hierarchy = cv2.findContours(erode, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-len = len(contours)
+newcontours = []
+for cnt in contours:
+    area = cv2.contourArea(cnt)
+    print(area)
+    if area > 400:
+        newcontours.append(cnt)
+num_contours = len(newcontours)
+print("num contours: ",num_contours)
 
-print("len: ",len)
-if len >0:
+if num_contours >0:
 
-    center,radius = cv2.minEnclosingCircle(contours[0])
+    center,radius = cv2.minEnclosingCircle(newcontours[0])
 
     # x, y, w, h = cv2.boundingRect(contours[0])
     # cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
@@ -55,7 +78,7 @@ if len >0:
     centery = int(centery)
 
     radius = int(radius)
-    cv2.circle(image,(centerx,centery),radius,(0, 255, 0), 3)
+    cv2.circle(img,(centerx,centery),radius,(0, 255, 0), 3)
     #
     #
     # gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -68,7 +91,7 @@ if len >0:
 
     # cv2.imshow("gray",gray)
     # cv2.imshow("dst",dst)
-    cv2.imshow("img",image)
+    cv2.imshow("img",img)
 
     cv2.waitKey()
     cv2.destroyAllWindows()
