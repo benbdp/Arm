@@ -23,8 +23,7 @@ def get_image():
     return image
 
 num = 100
-pic_num = 0
 
 for i in num:
-    cv2.imwrite("/home/pi/apples/"+str(pic_num)+".jpg",get_image())
+    cv2.imwrite("/home/pi/apples/"+str(i)+".jpg",get_image())
     time.sleep(0.1)
