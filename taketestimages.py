@@ -21,13 +21,9 @@ def get_image():
     camera.capture(rawCapture, format="bgr")
     image = rawCapture.array
     return image
-#
-# num = 0
-#
-# while num < 100:
-#     print(num)
-#     cv2.imwrite("/home/pi/apples/"+str(num)+".jpg",get_image())
-#     time.sleep(0.1)
-#     num=+1
-cv2.imshow("img",get_image())
-cv2.waitKey()
+
+
+
+while True:
+    cv2.imshow("img",get_image())
+    cv2.waitKey(5)
