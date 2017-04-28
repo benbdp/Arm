@@ -22,8 +22,16 @@ def get_image():
     image = rawCapture.array
     return image
 
+def video():
+    camera.capture_continuous(rawCapture,format="rgb")
+    frame = rawCapture.array
+    return frame
 
 
 while True:
-    cv2.imshow("img",get_image())
+    cv2.imshow("img",video())
     cv2.waitKey(5)
+
+
+# cv2.imshow("img",get_image())
+# cv2.waitKey(5)
