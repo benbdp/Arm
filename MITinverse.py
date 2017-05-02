@@ -4,7 +4,7 @@ import numpy as np
 
 leg1 = 12.3
 leg2 = 14.8  # lengths of legs in cm
-leg3 = 13.833
+leg3 = 13.8
 
 # find wrist positions
 def wristposx(tx,leg3,eo):
@@ -54,7 +54,7 @@ def inversek(tx,ty,leg1, leg2, leg3, eo):
     return t1, t2, t3
 
 
-tx = int(input("Enter Target X: "))
-ty = int(input("Enter Target Y: "))
-eo = int(input("Enter End-effector Orientation: "))
+tx = float(input("Enter Target X: "))
+ty = float(input("Enter Target Y: "))
+eo = float(input("Enter End-effector Orientation: "))
 print(inversek(tx, ty, leg1, leg2, leg3, eo))
