@@ -169,11 +169,19 @@ if __name__ == "__main__":
         if key == 's':
             predicted_y = predictY(servo_num)
             #little safety to keep us from hammering the thing into the floor
-            if(predicted_y > 15):
+            if(safety):
+                if(predicted_y < 15):
+                    if(servo_num == 2):
+                        smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
+                    else:
+                        smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
+            else:
                 if(servo_num == 2):
                     smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
                 else:
                     smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
+
+                
         if key == '2':
             servo_num = 2;
         if key == '3':
