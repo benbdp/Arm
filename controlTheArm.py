@@ -140,13 +140,14 @@ def calculateY(angleOne, angleTwo, angleThree):
 
 # little method that can be used to predict the y position after the next "tick"
 def predictY(servo_num):
+    num = 0
     if(servo_num ==2):
-        calculateY(np.radians(getAngleOfServo(2) + optimalPosDiff(2)), getThetaTwo(), getThetaThree())
+        num = calculateY(np.radians(getAngleOfServo(2) + optimalPosDiff(2)), getThetaTwo(), getThetaThree())
     elif(servo_num == 3):
-        calculateY(getThetaOne(),np.radians(getAngleOfServo(3) - optimalPosDiff(3)), getThetaThree())
+        num = calculateY(getThetaOne(),np.radians(getAngleOfServo(3) - optimalPosDiff(3)), getThetaThree())
     elif(servo_num == 4):
-        calculateY(getThetaOne(),getThetaTwo(), np.radians(getAngleOfServo(4) - optimalPosDiff(4)))
-
+        num = calculateY(getThetaOne(),getThetaTwo(), np.radians(getAngleOfServo(4) - optimalPosDiff(4)))
+    return num
 
 
 
