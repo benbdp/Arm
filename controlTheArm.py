@@ -170,7 +170,7 @@ if __name__ == "__main__":
             predicted_y = predictY(servo_num)
             #little safety to keep us from hammering the thing into the floor
             if(safety):
-                if(predicted_y < 15):
+                if(predicted_y < 10):
                     if(servo_num == 2):
                         smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
                     else:
