@@ -158,6 +158,7 @@ if __name__ == "__main__":
         key = read_single_keypress()
         
         #plus and minus vary between servos!!!! right now I'll fix it to work for 4
+        
         if key == 'q':
             break
         #move up
@@ -167,15 +168,27 @@ if __name__ == "__main__":
             else:
                 smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
         #move down
+        
         if key == 's':
             predicted_y = predictY(servo_num)
+            currentY = calculateCurrentY()
             #little safety to keep us from hammering the thing into the floor
+            '''
             if(safety):
                 if(predicted_y < 10):
                     if(servo_num == 2):
                         smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
                     else:
                         smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
+           '''
+            if(safety):
+                if(currentY < 15):
+                    print('hit safety')
+                else:
+                   if(servo_num == 2):
+                        smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
+                   else:
+                        smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num)) 
             else:
                 if(servo_num == 2):
                     smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
