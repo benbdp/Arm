@@ -139,15 +139,7 @@ def calculateY(angleOne, angleTwo, angleThree):
     return y + vOffset
 
 # little method that can be used to predict the y position after the next "tick"
-def predictY(servo_num):
-    num = 0
-    if(servo_num ==2):
-        num = calculateY(np.radians(getAngleOfServo(2) + optimalPosDiff(2)), getThetaTwo(), getThetaThree())
-    elif(servo_num == 3):
-        num = calculateY(getThetaOne(),np.radians(getAngleOfServo(3) - optimalPosDiff(3)), getThetaThree())
-    elif(servo_num == 4):
-        num = calculateY(getThetaOne(),getThetaTwo(), np.radians(getAngleOfServo(4) - optimalPosDiff(4)))
-    return num
+
 
 
 
@@ -170,17 +162,10 @@ if __name__ == "__main__":
         #move down
         
         if key == 's':
-            predicted_y = predictY(servo_num)
+            
             currentY = calculateCurrentY()
             #little safety to keep us from hammering the thing into the floor
-            '''
-            if(safety):
-                if(predicted_y < 10):
-                    if(servo_num == 2):
-                        smartMove(servo_num, sc.get_present_position(servo_num, True) + optimalPosDiff(servo_num))
-                    else:
-                        smartMove(servo_num, sc.get_present_position(servo_num, True) - optimalPosDiff(servo_num))
-           '''
+           
             if(safety):
                 if(currentY < 15):
                     print('hit safety')
