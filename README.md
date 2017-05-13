@@ -2,5 +2,5 @@ I am working on using a Microsoft Kinect to identify where a tomato is is in rea
 
 The arm that will be used to "pick" the tomato is made of Dynamixel AX-12A servos.
 
-The program is run on an Nvidia Jetson TK1 that interfaces with the servos using s USB2AX.
+The program is run on an Nvidia Jetson TK1 that interfaces with the servos using a USB2AX.
 
