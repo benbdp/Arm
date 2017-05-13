@@ -1,7 +1,7 @@
 from pyax12.connection import Connection
 import numpy as np
 
-sc = Connection(port='/dev/ttyUSB0', baudrate=1000000)
+sc = Connection(port='/dev/ttyACM0', baudrate=1000000)
 
 def servo2(pos):
     if angle < 0:
