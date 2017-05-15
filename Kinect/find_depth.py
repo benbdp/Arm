@@ -47,6 +47,12 @@ def find_apple(img,lower):
         pass
 
 
+def draw_on_depth(x,y,img):
+    try:
+        cv2.circle(img, (x, y), 10, (0, 0, 255), 3)
+    except:
+        pass
+
 
 
 if __name__ == "__main__":
@@ -59,7 +65,8 @@ if __name__ == "__main__":
         # get a frame from depth sensor
         depth = get_depth()
 
-        cv2.circle(depth, (cx, cy), 10, (0, 0, 255), 3)
+        draw_on_depth(cx,cy,depth)
+
         # display RGB image
         cv2.imshow('RGB image', frame)
         # display depth image
