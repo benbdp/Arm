@@ -22,9 +22,9 @@ def get_depth():
     return array
 
 
-def find_apple(img,lower):
+def find_apple(rgb,depth,lower):
     try:
-        hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+        hsv = cv2.cvtColor(rgb,cv2.COLOR_BGR2HSV)
         upper = np.array([180,255,255])
         mask = cv2.inRange(hsv,lower,upper)
         dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=2)  # dilate pixels to fill in gaps
@@ -41,15 +41,8 @@ def find_apple(img,lower):
         cx = int(M['m10'] / M['m00'])
         cy = int(M['m01'] / M['m00'])
 
-        cv2.circle(img,(cx,cy),10,(0,0,255),3)
-        return cx,cy
-    except:
-        pass
-
-
-def draw_on_depth(x,y,img):
-    try:
-        cv2.circle(img, (x, y), 10, (0, 0, 255), 3)
+        cv2.circle(rgb,(cx,cy),10,(0,0,255),3)
+        cv2.circle(depth,(cx,cy),10,(0,0,255),3)
     except:
         pass
 
@@ -60,12 +53,15 @@ if __name__ == "__main__":
         # get a frame from RGB camera
         frame = get_video()
 
-        cx,cy = find_apple(frame,stored_lower)
+
 
         # get a frame from depth sensor
         depth = get_depth()
 
-        draw_on_depth(cx,cy,depth)
+
+        #find and draw apple
+        find_apple(frame,depth, stored_lower)
+
 
         # display RGB image
         cv2.imshow('RGB image', frame)
