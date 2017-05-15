@@ -19,5 +19,7 @@ def get_video():
 while 1:
     cv2.imshow('Depth', get_depth())
     cv2.imshow('Video', get_video())
-    if cv2.waitKey(10) == 27:
+    k = cv2.waitKey(5) & 0xFF
+    if k == 27:
         break
+cv2.destroyAllWindows()
