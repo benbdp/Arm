@@ -34,7 +34,7 @@ def find_apple(img,lower):
         for cnt in contours:
             area = cv2.contourArea(cnt)
             # print "area", area
-            if area > 500:  # run test to ensure small contours are eliminated
+            if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
 
         M = cv2.moments(newcontours[0])
