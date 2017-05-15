@@ -42,6 +42,7 @@ def find_apple(img,lower):
         cy = int(M['m01'] / M['m00'])
 
         cv2.circle(img,(cx,cy),10,(0,0,255),3)
+        return cx,cy
     except:
         pass
 
@@ -53,10 +54,12 @@ if __name__ == "__main__":
         # get a frame from RGB camera
         frame = get_video()
 
-        find_apple(frame,stored_lower)
+        cx,cy = find_apple(frame,stored_lower)
 
         # get a frame from depth sensor
         depth = get_depth()
+
+        cv2.circle(depth, (cx, cy), 10, (0, 0, 255), 3)
         # display RGB image
         cv2.imshow('RGB image', frame)
         # display depth image
