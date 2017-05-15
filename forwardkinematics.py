@@ -51,7 +51,11 @@ def calculateY():
 def solveInverseKinematicSolutions(eeDesiredAngle, desiredX, desiredY):
     # figure out where the tip of wrist is. probably needs to 
   
+    wristx = desiredX -  CD* np.cos(np.radians(eeDesiredAngle))      
+    wristy = desiredY - CD * np.sin(np.radians(eeDesiredAngle))
     
+    print('Wristx:', wristx)
+    print('Wristy:', wristy)
     
     shoulderAngle = solveShoulderAngle(eeDesiredAngle, desiredX, desiredY)
     
@@ -70,27 +74,31 @@ def solveElbowAngle(eeDesiredAngle, desiredX, desiredY):
     #c^2 = a^2 + b^2 -2abcos(elbowangle), where elbowangle is opposite side c
     #c^2, from the pythagorean theorem, is just xwrist^2 + ywrist^2
    
-    wristx = desiredX -  CD* np.cos(eeDesiredAngle)       
-    wristy = desiredY - CD * np.sin(eeDesiredAngle)
+    wristx = desiredX -  CD* np.cos(np.radians(eeDesiredAngle))      
+    wristy = desiredY - CD * np.sin(np.radians(eeDesiredAngle))
     
     elbowAngle = np.arccos((np.power(AB, 2) + np.power(BC, 2) - np.power(wristx, 2) - np.power(wristy, 2))/(2 * AB * BC))
     
+    print('ELBOWANGLE:', elbowAngle)
     
-    return np.degrees(elbowAngle)
+
+    return elbowAngle
 
 
 def solveShoulderAngle(eeDesiredAngle, desiredX, desiredY):
     #similar process to solveElbowAngle
     
-    wristx = desiredX -  CD* np.cos(eeDesiredAngle)       
-    wristy = desiredY - CD * np.sin(eeDesiredAngle)
+    wristx = desiredX -  CD* np.cos(np.radians(eeDesiredAngle))     
+    wristy = desiredY - CD * np.sin(np.radians(eeDesiredAngle))
     
     arctanOfWrist = np.arctan(wristy/wristx)
     
     shoulderAngle = arctanOfWrist - np.arccos((np.power(wristx, 2) + np.power(wristy, 2) + np.power(AB, 2) - np.power(BC, 2))/(2 * AB * np.sqrt(np.power(wristx, 2) + np.power(wristy, 2))))
     
+    shoulderAngle = np.round(np.degrees(shoulderAngle), 3)
+    print('SHOULDERANGLE:', shoulderAngle)
     #round it off so we don't get any crazy decimals to large negative exponents.
-    return np.round(np.degrees(shoulderAngle), 5)
+    return shoulderAngle
     
 
 
@@ -116,8 +124,10 @@ def flipKinematics(shoulderAngle, elbowAngle, wristAngle, wristx, wristy, desire
     print('Flipped Wrist Angle:', newWristAngle)
     
 
-solveInverseKinematicSolutions(0, 26.1, 14.8)
-flipKinematics(0.0, 90.0, -90.0, 12.3, 14.8, 0)
- 
+solveInverseKinematicSolutions(0, 32.96, 19.16)
+#flipKinematics(0.0, 90.0, -90.0, 12.3, 14.8, 0)
+
+#solveShoulderAngle(0, 32.96, 19.16)
+#solveElbowAngle(0, 32.96, 19.16)
 #x   
-print(AB *np.cos(np.radians(100.541)) + BC * np.cos(np.radians(100.541 + -90.0)) + CD * np.cos(np.radians(100.541 - 90.0 - 10.541)))   
+#print(AB *np.cos(np.radians(100.541)) + BC * np.cos(np.radians(100.541 + -90.0)) + CD * np.cos(np.radians(100.541 - 90.0 - 10.541)))   
