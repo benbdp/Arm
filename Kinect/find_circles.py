@@ -14,7 +14,7 @@ while True:
 
 
     # output = frame.copy()
-    frame = cv2.medianBlur(frame,5)
+    frame = cv2.blur(frame, (5, 5),5)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(frame, 100, 200)
     cv2.imshow("edges",edges)
