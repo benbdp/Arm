@@ -21,7 +21,7 @@ while True:
 
 
     # detect circles in the image
-    circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 20,
+    circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 100,
                                param1=50, param2=30, minRadius=0, maxRadius=0)
     # ensure at least some circles were found
     if circles is not None:
