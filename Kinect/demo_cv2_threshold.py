@@ -8,8 +8,8 @@ import frame_convert2
 import numpy as np
 
 
-# threshold = 100
-# current_depth = 0
+threshold = 100
+current_depth = 0
 #
 #
 # def change_threshold(value):
@@ -27,8 +27,8 @@ def show_depth():
     # global current_depth
 
     depth, timestamp = freenect.sync_get_depth()
-    # depth = 255 * np.logical_and(depth >= current_depth - threshold,
-    #                              depth <= current_depth + threshold)
+    depth = 255 * np.logical_and(depth >= current_depth - threshold,
+                                 depth <= current_depth + threshold)
     depth = depth.astype(np.uint8)
     cv2.imshow('Depth', depth)
 
