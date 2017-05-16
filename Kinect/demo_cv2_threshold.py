@@ -9,7 +9,7 @@ import numpy as np
 
 
 threshold = 100
-current_depth = 0
+current_depth = 500
 #
 #
 # def change_threshold(value):
