@@ -29,7 +29,11 @@ def show_depth():
     depth, timestamp = freenect.sync_get_depth()
     depth = 255 * np.logical_and(depth >= current_depth - threshold,
                                  depth <= current_depth + threshold)
+
+    print depth
     depth = depth.astype(np.uint8)
+
+    print depth
     cv2.imshow('Depth', depth)
 
 
