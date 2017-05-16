@@ -22,7 +22,7 @@ while True:
 
     # detect circles in the image
     circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 100,
-                               param1=50, param2=30, minRadius=20, maxRadius=150)
+                               param1=50, param2=30, minRadius=20, maxRadius=80)
     # ensure at least some circles were found
     if circles is not None:
         # convert the (x, y) coordinates and radius of the circles to integers
