@@ -19,6 +19,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(frame, 100, 200)
 
+    cv2.imshow("edges", edges)
 
     # detect circles in the image
     circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 100,
