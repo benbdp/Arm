@@ -14,7 +14,7 @@ while True:
     frame = cv2.medianBlur(frame,5)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT,1,20,param1=50,param2=30,minRadius=0,maxRadius=0)
+    circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1.2, 100)
 
     circles = np.uint16(np.around(circles))
     for i in circles[0,:]:
