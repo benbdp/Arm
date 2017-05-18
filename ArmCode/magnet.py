@@ -14,16 +14,14 @@ def mag_off():
 
 
 if __name__ == "__main__":
-    try:
-        init_pwm()
-        on = True
-        while on:
-            entry = input("enter desired action: ")
-            if entry == "on":
-                mag_on()
-            elif entry == "off":
-                mag_off()
-            else:
-                on = False
-    except:
-        mag_off()
+    init_pwm()
+    on = True
+    while on:
+        entry = input("enter desired action: ")
+        if entry == "on":
+            mag_on()
+        elif entry == "off":
+            mag_off()
+        else:
+            on = False
+            mag_off()
