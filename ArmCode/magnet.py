@@ -16,5 +16,5 @@ wiringpi.pwmWrite(LED, 0)    # OFF
 #     wiringpi.pwmWrite(LED,led_value)
 #
 # led(1)
-
-wiringpi.pwmWrite(LED, 1)
+while True:
+    wiringpi.pwmWrite(LED, 1)
