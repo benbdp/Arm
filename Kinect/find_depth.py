@@ -46,6 +46,10 @@ def find_apple(rgb,depth,lower):
     except:
         pass
 
+#
+# def real_depth:
+#     depth, timestamp = freenect.sync_get_depth(0,DEPTH_MM)
+
 
 
 if __name__ == "__main__":
