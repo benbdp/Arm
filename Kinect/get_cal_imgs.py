@@ -20,8 +20,8 @@ def pretty_depth(depth):
     return depth
 
 
-path_ir = "/home/ubuntu/Arm/Kinect/cal_img/ir"
-path_rgb = "/home/ubuntu/Arm/Kinect/cal_imgs/rgb"
+path_ir = "/home/ubuntu/Arm/Kinect/cal_img/ir/"
+path_rgb = "/home/ubuntu/Arm/Kinect/cal_imgs/rgb/"
 num = 0
 while num < 30:
 
