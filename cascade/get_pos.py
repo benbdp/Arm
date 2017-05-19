@@ -29,7 +29,7 @@ def find_apple(rgb,lower):
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
         x, y, w, h = cv2.boundingRect(newcontours[0])
-        crop_img = rgb[y: y + h, x: x + w]
+        crop_img = rgb[y-5: y + h+5, x-5: x + w+5]
         return crop_img
         #
         #
