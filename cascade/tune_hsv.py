@@ -26,9 +26,10 @@ cv2.createTrackbar('v', 'result',0,255,nothing)
 
 while True:
     frame = get_video()
+    blur = cv2.blur(frame, (5, 5))
 
     #converting to HSV
-    hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)
 
     # get info from track bar and appy to result
     h = cv2.getTrackbarPos('h','result')
