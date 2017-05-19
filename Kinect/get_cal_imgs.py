@@ -23,15 +23,15 @@ def pretty_depth(depth):
 path_ir = "/home/ubuntu/Arm/Kinect/cal_imgs/ir/"
 path_rgb = "/home/ubuntu/Arm/Kinect/cal_imgs/rgb/"
 num = 0
-while num < 30:
-
-    rgb = get_rgb_video()
-    cv2.imwrite(path_rgb + "rgb" + str(num) + ".jpg", rgb)
-    cv2.imshow("rgb", rgb)
+while True:
+    #
+    # rgb = get_rgb_video()
+    # cv2.imwrite(path_rgb + "rgb" + str(num) + ".jpg", rgb)
+    # cv2.imshow("rgb", rgb)
 
     ir = get_ir_video()
     ir = pretty_depth(ir)
-    cv2.imwrite(path_ir + "ir" + str(num) + ".jpg", ir)
+    # cv2.imwrite(path_ir + "ir" + str(num) + ".jpg", ir)
     cv2.imshow("ir", ir)
 
     num += 1
