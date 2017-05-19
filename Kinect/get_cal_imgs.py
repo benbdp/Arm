@@ -25,9 +25,9 @@ path_rgb = "/home/ubuntu/Arm/Kinect/cal_imgs/rgb/"
 num = 0
 while True:
     #
-    # rgb = get_rgb_video()
+    rgb = get_rgb_video()
     # cv2.imwrite(path_rgb + "rgb" + str(num) + ".jpg", rgb)
-    # cv2.imshow("rgb", rgb)
+    cv2.imshow("rgb", rgb)
 
     ir = get_ir_video()
     ir = pretty_depth(ir)
