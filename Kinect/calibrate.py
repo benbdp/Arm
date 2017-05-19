@@ -29,7 +29,7 @@ elif args.type == "rgb":
     img_names_undistort = []
 
     for fn in img_names:
-        print('processing %s... ' % fn, end='')
+        print('processing %s... ' % fn)
         img = cv2.imread(fn, 0)
         if img is None:
             print("Failed to load", fn)
@@ -93,7 +93,7 @@ elif args.type == "ir":
     img_names_undistort = []
 
     for fn in img_names:
-        print('processing %s... ' % fn, end='')
+        print('processing %s... ' % fn)
         img = cv2.imread(fn, 0)
         if img is None:
             print("Failed to load", fn)

@@ -38,7 +38,7 @@ elif args.camera == "rgb":
         cv2.imwrite(path_rgb + "rgb" + str(num) + ".jpg", rgb)
         cv2.imshow("rgb", rgb)
         num += 1
-        k = cv2.waitKey(1000) & 0xFF
+        k = cv2.waitKey(10000) & 0xFF
         if k == 27:
             break
     cv2.destroyAllWindows()
@@ -53,7 +53,7 @@ elif args.camera == "ir":
         cv2.imwrite(path_ir + "ir" + str(num) + ".jpg", ir)
         cv2.imshow("ir", ir)
         num += 1
-        k = cv2.waitKey(1000) & 0xFF
+        k = cv2.waitKey(10000) & 0xFF
         if k == 27:
             break
     cv2.destroyAllWindows()
