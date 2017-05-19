@@ -13,9 +13,10 @@ def get_video():
     return array
 
 
-def find_apple(rgb,depth,lower):
+def find_apple(rgb,lower):
     try:
-        hsv = cv2.cvtColor(rgb,cv2.COLOR_BGR2HSV)
+        blur = cv2.blur(rgb, (5, 5))
+        hsv = cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)
         upper = np.array([180,255,255])
         mask = cv2.inRange(hsv,lower,upper)
         dilation = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=2)  # dilate pixels to fill in gaps
