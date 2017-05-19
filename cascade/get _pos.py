@@ -3,7 +3,7 @@ import numpy as np
 import time
 import freenect
 
-def tom_pos(frame,path):
+def fix_pos(frame,path):
         num = 0
         while True:
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -29,7 +29,7 @@ def get_video():
     array = cv2.cvtColor(array, cv2.COLOR_RGB2BGR)
     return array
 
-path = "/home/ubuntu/Arm/Find_Tom/pics"
+path = "/home/ubuntu/Arm/cascade/pics"
 # frame = get_video()
 # tom_pos(frame,path)
 while True:
