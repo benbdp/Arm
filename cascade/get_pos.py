@@ -35,7 +35,7 @@ path = "/home/ubuntu/Arm/cascade/pics"
 while True:
     frame = get_video()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    ret, dst = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY_INV)
+    ret, dst = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY_INV)
     dilation = cv2.dilate(dst, np.ones((5, 5), np.uint8), 1)
     cv2.imshow("window",dilation)
     k = cv2.waitKey(5) & 0xFF
