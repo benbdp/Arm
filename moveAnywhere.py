@@ -58,8 +58,8 @@ def read_single_keypress():
 
 while(True):
     
-    servo_num = input('Enter Servo Number')
-    angle = input('Enter Angle')
+    servo_num = float(input('Enter Servo Number'))
+    angle = float(input('Enter Angle'))
     sc.goto(servo_num, angle, 40, True)
 
     
