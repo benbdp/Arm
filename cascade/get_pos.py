@@ -30,7 +30,7 @@ def find_apple(rgb,lower):
                 newcontours.append(cnt)
 
         x, y, w, h = cv2.boundingRect(newcontours[0])
-        cv2.rectangle(rgb, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.rectangle(rgb, (x-10, y-10), (x + w+10, y + h+10), (0, 255, 0), 2)
 
     except:
         pass
