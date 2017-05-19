@@ -2,13 +2,12 @@ import freenect
 import numpy as np
 import cv2
 import argparse
+
 """http://stackoverflow.com/questions/7427101/dead-simple-argparse-example-wanted-1-argument-3-results"""
-
 parser = argparse.ArgumentParser(description="Program to take calibration images for Kinect")
-
 parser.add_argument('camera', help='Enter rgb or ir', nargs='?', default="check_string_for_empty")
-
 args = parser.parse_args()
+
 
 def get_ir_video():
     array, _ = freenect.sync_get_video(0, freenect.VIDEO_IR_10BIT)
@@ -19,6 +18,7 @@ def get_rgb_video():
     array, _ = freenect.sync_get_video()
     array = cv2.cvtColor(array, cv2.COLOR_RGB2BGR)
     return array
+
 
 def pretty_depth(depth):
     np.clip(depth, 0, 2**10-1, depth)
@@ -37,12 +37,10 @@ elif args.camera == "rgb":
         rgb = get_rgb_video()
         cv2.imwrite(path_rgb + "rgb" + str(num) + ".jpg", rgb)
         cv2.imshow("rgb", rgb)
-
         num += 1
         k = cv2.waitKey(5) & 0xFF
         if k == 27:
             break
-
     cv2.destroyAllWindows()
 
 elif args.camera == "ir":
@@ -50,17 +48,14 @@ elif args.camera == "ir":
     path_ir = "/home/ubuntu/Arm/Kinect/cal_imgs/ir/"
     num = 0
     while True:
-
         ir = get_ir_video()
         ir = pretty_depth(ir)
         cv2.imwrite(path_ir + "ir" + str(num) + ".jpg", ir)
         cv2.imshow("ir", ir)
-
         num += 1
         k = cv2.waitKey(5) & 0xFF
         if k == 27:
             break
-
     cv2.destroyAllWindows()
 
 else:
