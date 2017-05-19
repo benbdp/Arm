@@ -28,9 +28,13 @@ def find_apple(rgb,lower):
             # print "area", area
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
-
         x, y, w, h = cv2.boundingRect(newcontours[0])
-        cv2.rectangle(rgb, (x-3, y-3), (x + w+3, y + h+3), (0, 255, 0), 2)
+        crop_img = rgb[y: y + h, x: x + w]
+        return crop_img
+        #
+        #
+        # x, y, w, h = cv2.boundingRect(newcontours[0])
+        # cv2.rectangle(rgb, (x-3, y-3), (x + w+3, y + h+3), (0, 255, 0), 2)
 
     except:
         pass
@@ -45,11 +49,11 @@ if __name__ == "__main__":
 
 
         #find and draw apple
-        find_apple(frame,stored_lower)
+        apple = find_apple(frame,stored_lower)
 
 
         # display RGB image
-        cv2.imshow('window with circles', frame)
+        cv2.imshow('window with circles', apple)
 
         # quit program when 'esc' key is pressed
         k = cv2.waitKey(5) & 0xFF
