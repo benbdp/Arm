@@ -38,3 +38,7 @@ while True:
     ret, dst = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY_INV)
     dilation = cv2.dilate(dst, np.ones((5, 5), np.uint8), 1)
     cv2.imshow("window",dilation)
+    k = cv2.waitKey(5) & 0xFF
+    if k == 27:
+        break
+cv2.destroyAllWindows()
