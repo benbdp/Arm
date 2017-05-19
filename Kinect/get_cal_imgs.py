@@ -27,10 +27,10 @@ def pretty_depth(depth):
     return depth
 
 if args.camera == 'check_string_for_empty':
-    print ('Enter rgb or ir at the end ')
+    print ('Enter rgb or ir at the end')
 
 elif args.camera == "rgb":
-    print("You asked for rgb calibration")
+    print("Taking rgb images")
     path_rgb = "/home/ubuntu/Arm/Kinect/cal_imgs/rgb/"
     num = 0
     while True:
@@ -38,13 +38,13 @@ elif args.camera == "rgb":
         cv2.imwrite(path_rgb + "rgb" + str(num) + ".jpg", rgb)
         cv2.imshow("rgb", rgb)
         num += 1
-        k = cv2.waitKey(5) & 0xFF
+        k = cv2.waitKey(1000) & 0xFF
         if k == 27:
             break
     cv2.destroyAllWindows()
 
 elif args.camera == "ir":
-    print("You asked for ir calibration")
+    print("Taking ir images")
     path_ir = "/home/ubuntu/Arm/Kinect/cal_imgs/ir/"
     num = 0
     while True:
@@ -53,7 +53,7 @@ elif args.camera == "ir":
         cv2.imwrite(path_ir + "ir" + str(num) + ".jpg", ir)
         cv2.imshow("ir", ir)
         num += 1
-        k = cv2.waitKey(5) & 0xFF
+        k = cv2.waitKey(1000) & 0xFF
         if k == 27:
             break
     cv2.destroyAllWindows()
