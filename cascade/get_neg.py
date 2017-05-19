@@ -7,9 +7,9 @@ import os
 
 def store_raw_images():
     #http://image-net.org/api/text/imagenet.synset.geturls?wnid=n00523513
-    neg_images_link = 'http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n07942152'
+    neg_images_link = 'http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n14976871'
     neg_image_urls = urllib.request.urlopen(neg_images_link).read().decode()
-    pic_num = 1
+    pic_num = 1418
 
     if not os.path.exists('people'):
         os.makedirs('people')
