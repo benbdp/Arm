@@ -26,6 +26,7 @@ cv2.createTrackbar('v', 'result',0,255,nothing)
 
 while True:
     frame = get_video()
+    frame = cv2.resize(frame, (100, 100))
     blur = cv2.blur(frame, (5, 5))
 
     #converting to HSV
