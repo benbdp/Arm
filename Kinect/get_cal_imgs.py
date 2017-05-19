@@ -35,7 +35,7 @@ while True:
     cv2.imshow("ir", ir)
 
     num += 1
-    k = cv2.waitKey(1000) & 0xFF
+    k = cv2.waitKey(5) & 0xFF
     if k == 27:
         break
 
