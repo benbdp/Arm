@@ -29,7 +29,7 @@ def find_apple(rgb,lower):
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
         x, y, w, h = cv2.boundingRect(newcontours[0])
-        crop_img = rgb[y-5: y + h+5, x-5: x + w+5]
+        crop_img = rgb[y-2: y + h+2, x-2: x + w+2]
         return crop_img
         #
         #
@@ -45,6 +45,7 @@ if __name__ == "__main__":
     while True:
         # get a frame from RGB camera
         frame = get_video()
+        frame = cv2.resize(frame, (100, 100))
         cv2.imshow('window', frame)
 
 
