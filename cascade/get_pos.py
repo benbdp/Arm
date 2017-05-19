@@ -29,11 +29,9 @@ def find_apple(rgb,lower):
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
 
-        M = cv2.moments(newcontours[0])
-        cx = int(M['m10'] / M['m00'])
-        cy = int(M['m01'] / M['m00'])
+        x, y, w, h = cv2.boundingRect(newcontours[0])
+        cv2.rectangle(rgb, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-        cv2.circle(rgb,(cx,cy),10,(0,0,255),3)
     except:
         pass
 
