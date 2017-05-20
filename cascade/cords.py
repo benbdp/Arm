@@ -38,7 +38,7 @@ if __name__ == "__main__":
     frames = glob.glob(os.path.join(path_orig, '*.jpg'))
     file = open("/home/ubuntu/Arm/cascade/testfile.txt", "w+")
     num = 1
-    # 0001_0011_0023_0052_0052.jpg 1 11 23 52 52
+    # 0001_0011_0023_0052_0052.jpg 1 11 \\\\2 52
     try:
         while True:
             for fn in frames:
@@ -54,6 +54,7 @@ if __name__ == "__main__":
                 file.write(path_new + str(num) + ".jpg" +" " +str(cha) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
                 cv2.waitKey(1000)
+                num=+1
     except:
         print "error"
         file.close()
