@@ -37,6 +37,7 @@ if __name__ == "__main__":
     path = "/home/ubuntu/Arm/cascade/pos/"
     frames = glob.glob(os.path.join(path, '*.jpg'))
     file = open("/home/ubuntu/Arm/cascade/testfile.txt", "w")
+
     while True:
         for fn in frames:
             print('processing %s... ' % fn)
