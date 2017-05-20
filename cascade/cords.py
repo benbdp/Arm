@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
                 #find and draw apple
                 apple,x,y,w,h = find_apple(img,stored_lower,file)
-                file.write('x:'+str(x)+' y:'+str(y)+' w:'+str(w)+' h:'+str(h)+"\r\n")
+                file.write(str(x)+' '+str(y)+' '+str(w)+' '+str(h)+"\r\n")
                 cv2.imshow('window', apple)
                 cv2.waitKey(1000)
     except:
