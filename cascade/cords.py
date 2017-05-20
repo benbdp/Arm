@@ -46,6 +46,10 @@ if __name__ == "__main__":
 
             #find and draw apple
             apple,x,y,w,h = find_apple(img,stored_lower,file)
+            x = str(x)
+            y = str(y)
+            w = str(w)
+            h = str(h)
             file.write((x,y,w,h))
 
             cv2.imshow('window', apple)
