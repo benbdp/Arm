@@ -30,8 +30,8 @@ def find_apple(rgb,lower):
                 newcontours.append(cnt)
         x, y, w, h = cv2.boundingRect(newcontours[0])
         crop_img = rgb[y-4: y + h+4, x-4: x + w+4]
-        h, w = crop_img.shape[:2]
-        resized_image = cv2.resize(crop_img, (42, 50))
+        h, w = crop_img.shape[:2]            #w    h
+        resized_image = cv2.resize(crop_img, (48, 50))
 
         print h,w
 
