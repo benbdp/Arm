@@ -7,7 +7,7 @@ import os
 
 stored_lower = np.load("/home/ubuntu/Arm/Kinect/stored_lower.npy")
 
-def find_apple(rgb,lower):
+def find_apple(rgb,lower,file):
     try:
         blur = cv2.blur(rgb, (5, 5))
         hsv = cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)
@@ -23,6 +23,7 @@ def find_apple(rgb,lower):
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
         x, y, w, h = cv2.boundingRect(newcontours[0])
+        file.write(x,y,w,h)
         print "x: ",x, " y: ",y," w: ",w," h: ",h
         crop_img = rgb[y-2: y + h+2, x-2: x + w+2]
         # h, w = crop_img.shape[:2]            #w    h
@@ -35,6 +36,7 @@ def find_apple(rgb,lower):
 if __name__ == "__main__":
     path = "/home/ubuntu/Arm/cascade/pos/"
     frames = glob.glob(os.path.join(path, '*.jpg'))
+    file = open("testfile.txt", "w")
     while True:
         for fn in frames:
             print('processing %s... ' % fn)
