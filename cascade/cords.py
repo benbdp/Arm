@@ -36,11 +36,13 @@ if __name__ == "__main__":
     frames = glob.glob(os.path.join(path, '*.jpg'))
     while True:
         for fn in frames:
-            cv2.imshow('window', fn)
+            print('processing %s... ' % fn)
+            img = cv2.imread(fn)
+            cv2.imshow("img",img)
 
 
             #find and draw apple
-            apple = find_apple(fn,stored_lower)
+            apple = find_apple(img,stored_lower)
 
             cv2.imshow('window', apple)
 
