@@ -33,9 +33,6 @@ def find_apple(rgb,lower):
         crop_img = rgb[y-20: y + h+20, x-20: x + w+20]
         # h, w = crop_img.shape[:2]            #w    h
         # resized_image = cv2.resize(crop_img, (48, 50))
-
-        print h,w
-
         return crop_img
         #
         #
@@ -48,9 +45,10 @@ def find_apple(rgb,lower):
 
 
 if __name__ == "__main__":
-    num = 520
+    num = 0
     path = "/home/ubuntu/Arm/cascade/pos/"
     while True:
+        print num
         # get a frame from RGB camera
         frame = get_video()
         cv2.imshow('window', frame)
