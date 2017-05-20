@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
 
             #find and draw apple
-            apple = find_apple(img,stored_lower)
+            apple = find_apple(img,stored_lower,file)
 
             cv2.imshow('window', apple)
             cv2.waitKey(1000)
