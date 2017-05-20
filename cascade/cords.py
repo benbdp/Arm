@@ -46,3 +46,4 @@ if __name__ == "__main__":
             apple = find_apple(img,stored_lower)
 
             cv2.imshow('window', apple)
+            cv2.waitKey(1000)
