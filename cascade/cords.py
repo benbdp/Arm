@@ -32,9 +32,13 @@ def find_apple(rgb,lower,file):
         pass
 
 if __name__ == "__main__":
-    path = "/home/ubuntu/Arm/cascade/pos/"
-    frames = glob.glob(os.path.join(path, '*.jpg'))
+    path_orig = "/home/ubuntu/Arm/cascade/pos/"
+    path_new = "/home/ubuntu/Arm/cascade/new_pos/"
+
+    frames = glob.glob(os.path.join(path_orig, '*.jpg'))
     file = open("/home/ubuntu/Arm/cascade/testfile.txt", "w+")
+    num = 1
+    # 0001_0011_0023_0052_0052.jpg 1 11 23 52 52
     try:
         while True:
             for fn in frames:
@@ -42,11 +46,12 @@ if __name__ == "__main__":
                 img = cv2.imread(fn)
                 img = cv2.resize(img, (100, 100))
                 cv2.imshow("img",img)
-
+                row,clo,cha=img.shape
 
                 #find and draw apple
                 apple,x,y,w,h = find_apple(img,stored_lower,file)
-                file.write(str(x)+' '+str(y)+' '+str(w)+' '+str(h)+"\r\n")
+                cv2.imwrite(path_new + str(num) + ".jpg", img)
+                file.write(path_new + str(num) + ".jpg" +" " +str(cha) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
                 cv2.waitKey(1000)
     except:
