@@ -32,21 +32,20 @@ def find_apple(rgb,lower):
         pass
 
 if __name__ == "__main__":
-    num = 520
     path = "/home/ubuntu/Arm/cascade/pos/"
+    frames = glob.glob(os.path.join(path, '*.jpg'))
     while True:
-        frame = glob.glob(os.path.join(path, '*.jpg'))
-        cv2.imshow('window', frame)
+        for fn in frames:
+            cv2.imshow('window', fn)
 
 
-        #find and draw apple
-        apple = find_apple(frame,stored_lower)
+            #find and draw apple
+            apple = find_apple(fn,stored_lower)
 
-        cv2.imshow('window', apple)
-        num = num +1
+            cv2.imshow('window', apple)
 
-        # quit program when 'esc' key is pressed
-        k = cv2.waitKey(1000) & 0xFF
-        if k == 27:
-            break
-    cv2.destroyAllWindows()
+            # quit program when 'esc' key is pressed
+            k = cv2.waitKey(1000) & 0xFF
+            if k == 27:
+                break
+        cv2.destroyAllWindows()
