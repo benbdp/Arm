@@ -49,8 +49,8 @@ if __name__ == "__main__":
                 #find and draw apple
                 apple,x,y,w,h = find_apple(img,stored_lower,file)
                 gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
-                cv2.imwrite(path_new + str(num) + ".jpg", gray)
-                file.write(str(num) + ".jpg" +" " +str(1) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
+                cv2.imwrite(path_new + str(num).zfill(4) + ".jpg", gray)
+                file.write(str(num).zfill(4) + ".jpg" +" " +str(1) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
                 num=num +1
                 cv2.waitKey(2)
