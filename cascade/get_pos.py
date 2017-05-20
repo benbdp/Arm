@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
         # display RGB image
         cv2.imshow('window with circles', apple)
-        num =+1
+        num = num +1
 
         # quit program when 'esc' key is pressed
         k = cv2.waitKey(100) & 0xFF
