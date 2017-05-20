@@ -46,12 +46,13 @@ if __name__ == "__main__":
                 img = cv2.imread(fn)
                 img = cv2.resize(img, (100, 100))
                 cv2.imshow("img",img)
-                row,clo,cha=img.shape
 
                 #find and draw apple
                 apple,x,y,w,h = find_apple(img,stored_lower,file)
+                img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+                row,clo,cha=img.shape
                 cv2.imwrite(path_new + str(num) + ".jpg", img)
-                file.write(path_new + str(num) + ".jpg" +" " +str(cha) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
+                file.write(str(num) + ".jpg" +" " +str(cha) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
                 cv2.waitKey(1000)
                 num=+1
