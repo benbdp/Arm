@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 file.write(str(num) + ".jpg" +" " +str(1) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
                 num=num +1
-                cv2.waitKey(500)
+                cv2.waitKey(2)
     except:
         print "error"
         file.close()
