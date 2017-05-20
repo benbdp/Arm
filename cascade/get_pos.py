@@ -2,6 +2,7 @@
 import freenect
 import cv2
 import numpy as np
+import time
 
 
 stored_lower = np.load("/home/ubuntu/Arm/Kinect/stored_lower.npy")
@@ -47,7 +48,10 @@ def find_apple(rgb,lower):
 
 
 if __name__ == "__main__":
+    num = 0
+    path = "/home/ubuntu/Arm/cascade/pos"
     while True:
+        time.sleep(2)
         # get a frame from RGB camera
         frame = get_video()
         cv2.imshow('window', frame)
@@ -56,9 +60,11 @@ if __name__ == "__main__":
         #find and draw apple
         apple = find_apple(frame,stored_lower)
 
+        cv2.imwrite(path + "apple" + str(num) + ".jpg", apple)
 
         # display RGB image
         cv2.imshow('window with circles', apple)
+        num =+1
 
         # quit program when 'esc' key is pressed
         k = cv2.waitKey(5) & 0xFF
