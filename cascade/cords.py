@@ -23,6 +23,7 @@ def find_apple(rgb,lower,file):
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
         x, y, w, h = cv2.boundingRect(newcontours[0])
+        file.write(x,y,w,h)
         crop_img = rgb[y-2: y + h+2, x-2: x + w+2]
         # h, w = crop_img.shape[:2]            #w    h
         # resized_image = cv2.resize(crop_img, (48, 50))
@@ -34,7 +35,7 @@ def find_apple(rgb,lower,file):
 if __name__ == "__main__":
     path = "/home/ubuntu/Arm/cascade/pos/"
     frames = glob.glob(os.path.join(path, '*.jpg'))
-    file = open("/home/ubuntu/Arm/cascade/testfile.txt", "w")
+    file = open("/home/ubuntu/Arm/cascade/testfile.txt", "w+")
 
     while True:
         for fn in frames:
