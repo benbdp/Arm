@@ -54,7 +54,7 @@ if __name__ == "__main__":
                 cv2.imwrite(path_new + str(num) + ".jpg", img)
                 file.write(str(num) + ".jpg" +" " +str(cha) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
-                cv2.waitKey(1000)
+                cv2.waitKey(500)
                 num=+1
     except:
         print "error"
