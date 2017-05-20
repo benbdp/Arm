@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 apple,x,y,w,h = find_apple(img,stored_lower,file)
                 gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
                 cv2.imwrite(path_new + str(num).zfill(4) + ".jpg", gray)
-                file.write(str(num).zfill(4) + ".jpg" +" " +str(1) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
+                file.write(str(num).zfill(4)+"_"+str(x).zfill(4)+"_"+str(y).zfill(4)+"_"+str(w).zfill(4)+"_"+str(h).zfill(4)+ ".jpg" +" " +str(1) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
                 cv2.imshow('window', apple)
                 num=num +1
                 cv2.waitKey(2)
