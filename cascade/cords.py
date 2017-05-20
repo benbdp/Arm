@@ -38,6 +38,7 @@ if __name__ == "__main__":
         for fn in frames:
             print('processing %s... ' % fn)
             img = cv2.imread(fn)
+            img = cv2.resize(img, (100, 100))
             cv2.imshow("img",img)
 
 
@@ -45,9 +46,3 @@ if __name__ == "__main__":
             apple = find_apple(img,stored_lower)
 
             cv2.imshow('window', apple)
-
-            # quit program when 'esc' key is pressed
-            k = cv2.waitKey(1000) & 0xFF
-            if k == 27:
-                break
-        cv2.destroyAllWindows()
