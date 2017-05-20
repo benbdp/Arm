@@ -49,7 +49,6 @@ if __name__ == "__main__":
 
                 #find and draw apple
                 apple,x,y,w,h = find_apple(img,stored_lower,file)
-                img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
                 row,clo,cha=img.shape
                 cv2.imwrite(path_new + str(num) + ".jpg", img)
                 file.write(str(num) + ".jpg" +" " +str(cha) + " " + str(x) + ' ' + str(y) + ' ' + str(w) + ' ' + str(h) + "\r\n")
