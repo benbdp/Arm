@@ -23,12 +23,11 @@ def find_apple(rgb,lower,file):
             if area > 400:  # run test to ensure small contours are eliminated
                 newcontours.append(cnt)
         x, y, w, h = cv2.boundingRect(newcontours[0])
-        file.write(x,y,w,h)
         crop_img = rgb[y-2: y + h+2, x-2: x + w+2]
         # h, w = crop_img.shape[:2]            #w    h
         # resized_image = cv2.resize(crop_img, (48, 50))
 
-        return crop_img
+        return crop_img,x,y,w,h
     except:
         pass
 
@@ -46,7 +45,8 @@ if __name__ == "__main__":
 
 
             #find and draw apple
-            apple = find_apple(img,stored_lower,file)
+            apple,x,y,w,h = find_apple(img,stored_lower,file)
+            file.write((x,y,w,h))
 
             cv2.imshow('window', apple)
             cv2.waitKey(1000)
