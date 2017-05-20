@@ -49,9 +49,8 @@ def find_apple(rgb,lower):
 
 if __name__ == "__main__":
     num = 0
-    path = "/home/ubuntu/Arm/cascade/pos"
+    path = "/home/ubuntu/Arm/cascade/pos/"
     while True:
-        time.sleep(2)
         # get a frame from RGB camera
         frame = get_video()
         cv2.imshow('window', frame)
@@ -67,7 +66,7 @@ if __name__ == "__main__":
         num =+1
 
         # quit program when 'esc' key is pressed
-        k = cv2.waitKey(5) & 0xFF
+        k = cv2.waitKey(100) & 0xFF
         if k == 27:
             break
     cv2.destroyAllWindows()
