@@ -35,22 +35,20 @@ if __name__ == "__main__":
     path = "/home/ubuntu/Arm/cascade/pos/"
     frames = glob.glob(os.path.join(path, '*.jpg'))
     file = open("/home/ubuntu/Arm/cascade/testfile.txt", "w+")
+    try:
+        while True:
+            for fn in frames:
+                print('processing %s... ' % fn)
+                img = cv2.imread(fn)
+                img = cv2.resize(img, (100, 100))
+                cv2.imshow("img",img)
 
-    while True:
-        for fn in frames:
-            print('processing %s... ' % fn)
-            img = cv2.imread(fn)
-            img = cv2.resize(img, (100, 100))
-            cv2.imshow("img",img)
 
-
-            #find and draw apple
-            apple,x,y,w,h = find_apple(img,stored_lower,file)
-            x = str(x)
-            y = str(y)
-            w = str(w)
-            h = str(h)
-            file.write((x,y,w,h))
-
-            cv2.imshow('window', apple)
-            cv2.waitKey(1000)
+                #find and draw apple
+                apple,x,y,w,h = find_apple(img,stored_lower,file)
+                file.write('x:'+str(x))
+                cv2.imshow('window', apple)
+                cv2.waitKey(1000)
+    except:
+        print "error"
+        file.close()
