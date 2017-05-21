@@ -13,8 +13,6 @@ def get_video():
 while 1:
     img = get_video()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    # add this
     # image, reject levels level weights.
     apple = cascade.detectMultiScale(gray, 10, 10)
 
