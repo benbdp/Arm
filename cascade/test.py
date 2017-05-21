@@ -16,6 +16,11 @@ while 1:
     # image, reject levels level weights.
     apple = cascade.detectMultiScale(gray, 10, 10)
 
+    found = len(apple)
+
+    if found == 1:
+        print("found an apple")
+
     # add this
     for (x, y, w, h) in apple:
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 0), 2)
