@@ -30,6 +30,7 @@ elif args.type == "rgb":
     num = 1
     for fname in images:
         print (num)
+
         img = cv2.imread(fname)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         h, w = gray.shape[:2]
@@ -54,20 +55,31 @@ elif args.type == "rgb":
     height = input("enter what was printed for h")
     width = input("enter what was printed for w")
 
-    retval, cameramatrix, distortioncoeff, rotationvector, translationvector = cv2.calibrateCamera(objpoints, imgpoints, (width, height), None,None)
+    retval, camera_matrix, dist_coefs, rotationvector, translationvector = cv2.calibrateCamera(objpoints, imgpoints, (width, height), None,None)
 
 
-    print('matrix', cameramatrix)
-    print('dist', distortioncoeff)
+    print('matrix', camera_matrix)
+    print('dist', dist_coefs)
 
     mean_error = 0
     for i in range(len(objpoints)):
-        imgpoints2, _ = cv2.projectPoints(objpoints[i], rotationvector[i], translationvector[i], cameramatrix,
-                                          distortioncoeff)
+        imgpoints2, _ = cv2.projectPoints(objpoints[i], rotationvector[i], translationvector[i], camera_matrix,
+                                          dist_coefs)
         error = cv2.norm(imgpoints[i], imgpoints2, cv2.NORM_L2) / len(imgpoints2)
         mean_error += error
 
     print ("mean error: ", mean_error / len(objpoints))
+
+    for img in images:
+        img = cv2.imread(images)
+
+        h, w = img.shape[:2]
+        newcameramtx, roi = cv2.getOptimalNewCameraMatrix(camera_matrix, dist_coefs, (w, h), 1, (w, h))
+
+        dst = cv2.undistort(img, camera_matrix, dist_coefs, None, newcameramtx)
+
+        cv2.imshow('undistort',dst)
+        cv2.waitKey()
 
 
 elif args.type == "ir":
