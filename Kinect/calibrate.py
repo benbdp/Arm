@@ -70,8 +70,8 @@ elif args.type == "rgb":
 
     print ("mean error: ", mean_error / len(objpoints))
 
-    for img in images:
-        img = cv2.imread(images)
+    for fname in images:
+        img = cv2.imread(fname)
 
         h, w = img.shape[:2]
         newcameramtx, roi = cv2.getOptimalNewCameraMatrix(camera_matrix, dist_coefs, (w, h), 1, (w, h))
