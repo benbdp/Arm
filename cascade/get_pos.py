@@ -58,7 +58,7 @@ if __name__ == "__main__":
         #find and draw apple
         apple = find_apple(frame,stored_lower)
 
-        cv2.imwrite(path + "apple" + str(num) + ".jpg", apple)
+        cv2.imwrite(path + "apple" + str(num) + ".jpg", frame)
 
         # display RGB image
         cv2.imshow('window with circles', apple)
