@@ -15,6 +15,7 @@ while 1:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # image, reject levels level weights.
     apple = cascade.detectMultiScale(gray, 10, 10)
+    print(apple)
 
     found = len(apple)
 
@@ -25,7 +26,7 @@ while 1:
 
     # add this
     for (x, y, w, h) in apple:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 0), 2)
+        cv2.rectangle(img, (x-10, y-10), (x + w+10, y + h+10), (255, 255, 0), 2)
 
     cv2.imshow('img', img)
     k = cv2.waitKey(30) & 0xff
