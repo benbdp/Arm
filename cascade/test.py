@@ -3,7 +3,7 @@ import cv2
 import freenect
 
 # this is the cascade we just made. Call what you want
-cascade = cv2.CascadeClassifier('/home/benjamin/PycharmProjects/Arm/cascade/data/cascade.xml')
+cascade = cv2.CascadeClassifier('/home/ubuntu/Arm/cascade/data/cascade.xml')
 
 def get_video():
     array, _ = freenect.sync_get_video()
