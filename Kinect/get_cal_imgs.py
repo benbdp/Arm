@@ -22,7 +22,7 @@ def get_rgb_video():
 
 def pretty_depth(depth):
     np.clip(depth, 0, 2**10-1, depth)
-    depth >>=5
+    depth >>=1
     depth=depth.astype(np.uint8)
     return depth
 
