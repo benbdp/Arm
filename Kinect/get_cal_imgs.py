@@ -22,7 +22,7 @@ def get_rgb_video():
 
 def pretty_depth(depth):
     np.clip(depth, 0, 2**10-1, depth)
-    depth >>=1
+    depth >>=2
     depth=depth.astype(np.uint8)
     return depth
 
@@ -50,6 +50,7 @@ elif args.camera == "ir":
     while True:
         ir = get_ir_video()
         ir = pretty_depth(ir)
+        ir = cv2.GaussianBlur(ir, (5, 5), 5)
         cv2.imwrite(path_ir + "ir" + str(num) + ".jpg", ir)
         cv2.imshow("ir", ir)
         num += 1
