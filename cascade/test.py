@@ -16,7 +16,7 @@ while 1:
 
     # add this
     # image, reject levels level weights.
-    apple = cascade.detectMultiScale(gray, 7, 10)
+    apple = cascade.detectMultiScale(gray, 15, 5)
 
     # add this
     for (x, y, w, h) in apple:
