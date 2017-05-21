@@ -101,19 +101,18 @@ elif args.type == "ir":
         print(num)
 
         img = cv2.imread(fname)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        h, w = gray.shape[:2]
+        h, w = img.shape[:2]
         print("h: ", h)
         print("w: ", w)
 
         # Find the chess board corners
-        ret, corners = cv2.findChessboardCorners(gray, (9, 6), None)
+        ret, corners = cv2.findChessboardCorners(img, (9, 6), None)
         print(ret)
         # If found, add object points, image points (after refining them)
         if ret == True:
             objpoints.append(objp)
 
-            corners2 = cv2.cornerSubPix(gray, corners, (11, 11), (-1, -1), criteria)
+            corners2 = cv2.cornerSubPix(img, corners, (11, 11), (-1, -1), criteria)
             imgpoints.append(corners2)
 
             # Draw and display the corners
