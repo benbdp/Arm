@@ -45,7 +45,8 @@ def find_apple(rgb,lower):
 
 
 if __name__ == "__main__":
-    num = 0
+    start = input("Enter start num: ")
+    num = int(start)
     path = "/home/ubuntu/Arm/cascade/pos/"
     while True:
         print num
