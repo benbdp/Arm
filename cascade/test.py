@@ -20,6 +20,8 @@ while 1:
 
     if found == 1:
         print("found an apple")
+    else:
+        print("no apple")
 
     # add this
     for (x, y, w, h) in apple:
