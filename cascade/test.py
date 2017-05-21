@@ -15,7 +15,6 @@ while 1:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # image, reject levels level weights.
     apple = cascade.detectMultiScale(gray, 10, 10)
-    print(apple)
 
     found = len(apple)
 
