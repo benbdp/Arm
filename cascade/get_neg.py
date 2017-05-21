@@ -7,21 +7,21 @@ import os
 
 def store_raw_images():
     #http://image-net.org/api/text/imagenet.synset.geturls?wnid=n00523513
-    neg_images_link = 'http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n14976871'
+    neg_images_link = 'http://image-net.org/api/text/imagenet.synset.geturls?wnid=n00523513'
     neg_image_urls = urllib.request.urlopen(neg_images_link).read().decode()
-    pic_num = 1418
+    pic_num = 1997
 
-    if not os.path.exists('people'):
-        os.makedirs('people')
+    if not os.path.exists('neg'):
+        os.makedirs('neg')
 
     for i in neg_image_urls.split('\n'):
         try:
             print(i)
-            urllib.request.urlretrieve(i, "people/" + str(pic_num) + ".jpg")
-            img = cv2.imread("people/" + str(pic_num) + ".jpg", cv2.IMREAD_GRAYSCALE)
+            urllib.request.urlretrieve(i, "neg/" + str(pic_num) + ".jpg")
+            img = cv2.imread("neg/" + str(pic_num) + ".jpg", cv2.IMREAD_GRAYSCALE)
             # should be larger than samples / pos pic (so we can place our image on it)
             resized_image = cv2.resize(img, (100, 100))
-            cv2.imwrite("people/" + str(pic_num) + ".jpg", resized_image)
+            cv2.imwrite("neg/" + str(pic_num) + ".jpg", resized_image)
             pic_num += 1
 
         except Exception as e:
@@ -61,5 +61,5 @@ def create_pos_n_neg():
 
 create_pos_n_neg()
 # find_uglies()
-#store_raw_images()
+# store_raw_images()
 
