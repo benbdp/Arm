@@ -16,7 +16,7 @@ def get_video():
 
 def find_apple(rgb,lower):
     try:
-        blur = cv2.blur(rgb, (5, 5))
+        blur = cv2.GaussianBlur(rgb, (5, 5), 5)
         hsv = cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)
         upper = np.array([180,255,255])
         mask = cv2.inRange(hsv,lower,upper)
