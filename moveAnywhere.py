@@ -56,10 +56,19 @@ def read_single_keypress():
         fcntl.fcntl(fd, fcntl.F_SETFL, flags_save)
     return ret
 
+def correctInputAngle(servo_num, angle):
+    if(servo_num == 2 or servo_num == 4):
+        return -1 * angle
+    else:
+        return angle
+
 while(True):
     
     servo_num = int(input('Enter Servo Number'))
     angle = int(input('Enter Angle'))
+    
+    angle = correctInputAngle(servo_num, angle)
+    
     sc.goto(servo_num, angle, 40, True)
 
     

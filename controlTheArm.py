@@ -101,6 +101,15 @@ def getAngleOfServo(servo_num):
         return -1 * angle
     else:
         return angle
+
+#method that corrects input angles to what the servo thinks. Input a standard inverse kinematic angle,
+#this will fix it for the servos
+def correctInputAngle(servo_num, angle):
+    if(servo_num == 2 or servo_num == 4):
+        return -1 * angle
+    else:
+        return angle
+    
     
 
 def getThetaOne():
