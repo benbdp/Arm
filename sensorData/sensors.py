@@ -27,11 +27,20 @@ def getSoilTemp():
     tempReading = tempReading.rstrip()   # remove whitespace
     return tempReading  # return reading
 
+# def getHumid():
+#     ser.write(b'h')  # send "h" to arduino for humidity reading
+#     humidReading = ser.readline().decode('ascii')  # read from arduino
+#     humidReading = humidReading.rstrip()   # remove whitespace
+#     return humidReading  # return reading
+
+# test function to combine two functions
 def getHumid():
     ser.write(b'h')  # send "h" to arduino for humidity reading
     humidReading = ser.readline().decode('ascii')  # read from arduino
     humidReading = humidReading.rstrip()   # remove whitespace
-    return humidReading  # return reading
+    while len(humidReading) == 0:
+        ser.write(b'h')
+        return humidReading
 
 # functions that make sure that we actually have received data
 def getLightReturn():
