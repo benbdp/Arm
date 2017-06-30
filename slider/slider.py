@@ -16,13 +16,28 @@ def home_b():
         pass
     print("At B Home")
 
+def setup():
+    while len(ser.readline().decode('ascii').rstrip()) == 0:
+        pass
+    print("Connected!")
+
+def move(num):
+    ser.write(bytes(str(num) + "d,", encoding="ascii"))
+
+
 
 if __name__ == "__main__":
     try:
-        while len(ser.readline().decode('ascii').rstrip()) == 0:
-            pass
-        print("Connected!")
-        home_b()
+        setup()
+        stat = True
+        while stat:
+            entry = input("Entry: ")
+            if entry == "a":
+                home_a()
+            if entry == "b":
+                home_b()
+            else:
+                stat = False
     except:
         ser.close()
         print("Unexpected error:", sys.exc_info()[0])
