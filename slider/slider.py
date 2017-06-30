@@ -2,7 +2,7 @@ import serial
 import time
 import sys
 
-ser = serial.Serial('/dev/ttyACM1',baudrate=9600,timeout=1)
+ser = serial.Serial('/dev/ttyACM0',baudrate=9600,timeout=1)
 
 def home_a():
     ser.write(bytes(str(9999)+"a,", encoding="ascii"))
