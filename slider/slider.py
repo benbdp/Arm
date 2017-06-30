@@ -1,42 +1,29 @@
 import serial
+import time
+import sys
 
-ser = serial.Serial('COM6',baudrate=9600,timeout=1)
+ser = serial.Serial('/dev/ttyACM1',baudrate=9600,timeout=1)
 
+def home_a():
+    ser.write(bytes(str(9999)+"a,", encoding="ascii"))
+    while ser.readline().decode('ascii').rstrip() != "Reached A":
+        pass
+    print("At A Home")
 
-def forward():
-    ser.write(b'f')
-
-def backward():
-    ser.write(b'b')
-
-def get_return():
-    ret = ser.readline().decode('ascii')
-    ret = ret.rstrip()
-    return ret
-
-def get_real_return():
-    while len(get_return()) ==0:
-        get_return()
-    return get_return()
+def home_b():
+    ser.write(bytes(str(9999) + "d,", encoding="ascii"))
+    while ser.readline().decode('ascii').rstrip() != "Reached B":
+        pass
+    print("At B Home")
 
 
 if __name__ == "__main__":
     try:
-        while True:
-            forward()
-            print(get_return())
-            # entry = input("Enter f or b: ")
-            # if entry == 'f':
-            #     status = True
-            #     while status:
-            #         forward()
-            #         if get_real_return() == 'g':
-            #             status = True
-            #         elif get_real_return() == 'b':
-            #             status = False
-            #     print("error")
-
-
-
+        while len(ser.readline().decode('ascii').rstrip()) == 0:
+            pass
+        print("Connected!")
+        home_b()
     except:
         ser.close()
+        print("Unexpected error:", sys.exc_info()[0])
+        raise
