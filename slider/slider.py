@@ -1,5 +1,4 @@
 import serial
-import time
 import sys
 
 ser = serial.Serial('/dev/ttyACM0',baudrate=9600,timeout=1)
@@ -23,6 +22,10 @@ def setup():
 
 def move(num):
     ser.write(bytes(str(num) + "d,", encoding="ascii"))
+    while ser.readline().decode('ascii').rstrip() < num:
+        pass
+    print("Reached point!")
+
 
 
 

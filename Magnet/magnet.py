@@ -1,4 +1,4 @@
-import wiringpi
+import wiringPi
 
 """http://raspi.tv/2013/how-to-use-wiringpi2-for-python-with-pull-ups-or-pull-downs-and-pwm"""
 
