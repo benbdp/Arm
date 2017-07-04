@@ -197,11 +197,11 @@ if __name__ == "__main__":
         if key == '4':
             servo_num = 4;
         if key == '9':
-            sc.goto(servo_num,90, 70, True)
+            sc.goto(servo_num,-90, 70, True) #opposite cuz of how servos are
         if key == '0':
             sc.goto(servo_num,0, 70, True)
         if key == '8':
-            sc.goto(servo_num,-90, 70, True)
+            sc.goto(servo_num,90, 70, True) #opposite cuz of how servos are
         if key == 'z':
             sc.goto(servo_num, 0, 70, True)
         #read
