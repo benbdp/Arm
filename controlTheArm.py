@@ -9,7 +9,7 @@ Created on Wed Apr 19 19:37:40 2017
 import numpy as np
 from pyax12.connection import Connection
 
-sc = Connection(port = '/dev/ttyACM0', baudrate = 1000000)
+sc = Connection(port = '/dev/ttyACM1', baudrate = 1000000)
 
 AB = 12.3
 BC = 14.8
@@ -81,7 +81,7 @@ def smartMove(num, pos):
             
     if(num == 2):
         if(pos < 150 and pos > -150):
-            
+        
             sc.goto(2, pos, 30, True)
             
 #little thing to decide the 'diff' in main for smartmove. this sets the interval to move to every keypress
