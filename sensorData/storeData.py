@@ -80,6 +80,7 @@ if __name__ == "__main__":
         print("created db")
         create_table()
         num = input("enter how long to run for")
+        num = int(num)
         for i in range(num):
             print("reading: ",i)
             light = getLightReturn()
