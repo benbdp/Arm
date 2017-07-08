@@ -77,8 +77,11 @@ def getHumidReturn():
 
 if __name__ == "__main__":
     try:
+        print("created db")
         create_table()
-        while True:
+        num = 1000
+        for i in range(num):
+            print("reading: ",i)
             light = getLightReturn()
             moist = getMoistReturn()
             airTemp = getAirTempReturn()
@@ -99,6 +102,7 @@ if __name__ == "__main__":
 
 
             time.sleep(1)
+        print("done readings")
     except:
         c.close()
         conn.close()
