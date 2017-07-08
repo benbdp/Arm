@@ -79,7 +79,7 @@ if __name__ == "__main__":
     try:
         print("created db")
         create_table()
-        num = 1000
+        num = input("enter how long to run for")
         for i in range(num):
             print("reading: ",i)
             light = getLightReturn()
@@ -101,8 +101,9 @@ if __name__ == "__main__":
                     data_entry("humid", item)
 
 
-            time.sleep(1)
+            time.sleep(20)
         print("done readings")
     except:
+        print("interupt")
         c.close()
         conn.close()

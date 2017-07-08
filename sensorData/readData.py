@@ -15,7 +15,7 @@ def read_from_db():
         print(row)
 
 def compute_mean():
-    c.execute("SELECT * FROM readings WHERE sensor = 'light'")
+    c.execute("SELECT * FROM readings WHERE sensor = 'airTemp'")
     data = c.fetchall()
     vals = []
     for row in data:
@@ -48,7 +48,7 @@ def compute_mean():
 
 
 def graph_data():
-    c.execute("SELECT datestamp, value FROM readings WHERE sensor = 'light'")
+    c.execute("SELECT datestamp, value FROM readings WHERE sensor = 'airTemp'")
     data = c.fetchall()
 
     dates = []
