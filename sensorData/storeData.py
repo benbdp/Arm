@@ -4,7 +4,7 @@ import random
 import time
 import serial
 # initialize serial port
-ser = serial.Serial('/dev/ttyACM0', baudrate=9600, timeout=1)
+ser = serial.Serial('/dev/ttyAMA0', baudrate=9600, timeout=1)
 
 conn = sqlite3.connect('tomatoData.db')
 c = conn.cursor()
