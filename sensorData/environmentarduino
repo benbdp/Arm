@@ -1,0 +1,54 @@
+#include "DHT.h"
+#define DHTPIN 5     // what digital pin DHT11 is connected to
+#define DHTTYPE DHT22   // DHT 11
+DHT dht(DHTPIN, DHTTYPE);
+char userInput;
+
+void setup(){
+  Serial.begin(9600);
+  dht.begin();
+}
+void loop(){
+if(Serial.available()> 0){ 
+    userInput = Serial.read();
+    
+      // read "l" return light
+      // light sensor attached to A0
+      if(userInput == 'l'){
+        int sensorValue = analogRead(A0);
+        Serial.println(sensorValue);
+      }
+      
+      // read "m" return soil moisture
+      // moisture sensor attached to A1
+       if(userInput == 'l'){
+        int sensorValue = analogRead(A1);
+        Serial.println(sensorValue);
+      }
+
+      // read "a" return air temperature
+      // DHT11 sensor attached to D8
+       if(userInput == 'a'){
+        Serial.println(dht.readTemperature(true));
+      }
+      
+      // read "s" return soil temperature
+      // soil sensor attached to A2
+       if(userInput == 's'){
+        int sensorValue = analogRead(A2);
+        Serial.println(sensorValue);
+      }
+       // read "m" return soil moisture
+      // soil sensor attached to A2
+       if(userInput == 'm'){
+        int sensorValue = analogRead(A3);
+        Serial.println(sensorValue);
+      }
+
+      // read "h" return humidity
+      // DHT sensor attached to D8
+       if(userInput == 'h'){
+         Serial.println(dht.readHumidity());
+      }
+  }
+}
