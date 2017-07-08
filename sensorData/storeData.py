@@ -2,6 +2,9 @@ import sqlite3
 import datetime
 import random
 import time
+import serial
+# initialize serial port
+ser = serial.Serial('/dev/ttyACM0', baudrate=9600, timeout=1)
 
 conn = sqlite3.connect('tomatoData.db')
 c = conn.cursor()
@@ -14,15 +17,73 @@ def data_entry(sensor,value):
     c.execute("INSERT INTO readings(datestamp,sensor,value) VALUES (?,?,?)",(datestamp,sensor,value))
     conn.commit()
 
+
+# functions that request and read data from the arduino
+def getLight():
+    ser.write(b'l')  # send "l" to arduino for light reading
+    lightReading = ser.readline().decode('ascii')
+    lightReading = lightReading.rstrip()  # remove whitespace
+    return lightReading  # return reading
+
+def getMoist():
+    ser.write(b'm')  # send "m" to arduino for soil moisture
+    moistReading = ser.readline().decode('ascii')  # read from arduino
+    moistReading = moistReading.rstrip()   # remove whitespace
+    return moistReading  # return reading
+
+def getAirTemp():
+    ser.write(b'a')  # send "a" to arduino for air temperature reading
+    tempReading = ser.readline().decode('ascii')  # read from arduino
+    tempReading = tempReading.rstrip()   # remove whitespace
+    return tempReading  # return reading
+
+def getSoilTemp():
+    ser.write(b's')  # send "s" to arduino for soil temperature reading
+    tempReading = ser.readline().decode('ascii')  # read from arduino
+    tempReading = tempReading.rstrip()   # remove whitespace
+    return tempReading  # return reading
+
+def getHumid():
+    ser.write(b'h')  # send "h" to arduino for humidity reading
+    humidReading = ser.readline().decode('ascii')  # read from arduino
+    humidReading = humidReading.rstrip()   # remove whitespace
+    return humidReading  # return reading
+
+# functions that make sure that we actually have received data
+def getLightReturn():
+    while len(getLight()) == 0:
+        getLight()
+    return getLight()
+
+def getMoistReturn():
+    while len(getMoist()) == 0:
+        getMoist()
+    return getMoist()
+
+def getAirTempReturn():
+    while len(getAirTemp()) == 0:
+        getAirTemp()
+    return getAirTemp()
+
+def getSoilTempReturn():
+    while len(getSoilTemp()) == 0:
+        getSoilTemp()
+    return getSoilTemp()
+
+def getHumidReturn():
+    while len(getHumid()) == 0:
+        getHumid()
+    return getHumid()
+
 if __name__ == "__main__":
     try:
         create_table()
         while True:
-            light = random.randrange(0,100)
-            moist = random.randrange(0,100)
-            airTemp = random.randrange(0,100)
-            soilTemp = random.randrange(0,100)
-            humid = random.randrange(0,100)
+            light = getLightReturn()
+            moist = getMoistReturn()
+            airTemp = getAirTempReturn()
+            soilTemp = getSoilTempReturn()
+            humid = getHumidReturn()
             readings =[light,moist,airTemp,soilTemp,humid]
             for index, item in enumerate(readings):
                 if index == 0:

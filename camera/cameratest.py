@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 
 camera = cv2.VideoCapture(0)
-
+camera.set(cv2.CAP_PROP_EXPOSURE,0.5)
+print(camera.get(cv2.CAP_PROP_EXPOSURE))
 
 
 while True:
