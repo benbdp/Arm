@@ -10,30 +10,30 @@ c = conn.cursor()
 
 def light_entry(value):
     timestamp = int(time.time())
-    print(timestamp)
+    # print(timestamp)
     c.execute("INSERT INTO light(timestamp,value) VALUES (%s,%s)",(timestamp,value))
     conn.commit()
 
 def air_temp_entry(value):
     timestamp = int(time.time())
-    print(timestamp)
+    # print(timestamp)
     c.execute("INSERT INTO air_temp(timestamp,value) VALUES (%s,%s)",(timestamp,value))
     conn.commit()
 def moisture_entry(value):
     timestamp = int(time.time())
-    print(timestamp)
+    # print(timestamp)
     c.execute("INSERT INTO moisture(timestamp,value) VALUES (%s,%s)",(timestamp,value))
     conn.commit()
 
 def soil_temp_entry(value):
     timestamp = int(time.time())
-    print(timestamp)
+    # print(timestamp)
     c.execute("INSERT INTO soil_temp(timestamp,value) VALUES (%s,%s)",(timestamp,value))
     conn.commit()
 
 def humidity_entry(value):
     timestamp = int(time.time())
-    print(timestamp)
+    # print(timestamp)
     c.execute("INSERT INTO humidity(timestamp,value) VALUES (%s,%s)",(timestamp,value))
     conn.commit()
 
@@ -100,8 +100,9 @@ def getHumidReturn():
 
 if __name__ == "__main__":
     try:
-        num_of_readings = 100
+        num_of_readings = 240
         for i in range(num_of_readings):
+            print(i)
             light = getLightReturn()
             light_entry(light)
 
@@ -117,7 +118,7 @@ if __name__ == "__main__":
             humid = getHumidReturn()
             humidity_entry(humid)
 
-            time.sleep(1)
+            time.sleep(60)
     except:
         c.close()
         conn.close()
