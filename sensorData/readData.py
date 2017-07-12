@@ -1,21 +1,21 @@
-import sqlite3
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-from dateutil import parser
-from matplotlib import style
-style.use('fivethirtyeight')
+import mysql.connector
+# import matplotlib.pyplot as plt
+# import matplotlib.dates as mdates
+# from dateutil import parser
+# from matplotlib import style
+# style.use('fivethirtyeight')
 
-conn = sqlite3.connect('tomatoData.db')
+conn = mysql.connector.connect(user='root',password='password',host='tomatoarm.cwg4p0agnguy.us-east-2.rds.amazonaws.com',database='tomato_data')
 c = conn.cursor()
 
 def read_from_db():
-    c.execute("SELECT * FROM readings WHERE sensor = 'light'")
+    c.execute("SELECT * FROM humidity")
     data = c.fetchall()
     for row in data:
         print(row)
 
 def compute_mean():
-    c.execute("SELECT * FROM readings WHERE sensor = 'airTemp'")
+    c.execute("SELECT * FROM readings WHERE sensor = 'moist'")
     data = c.fetchall()
     vals = []
     for row in data:
@@ -48,7 +48,8 @@ def compute_mean():
 
 
 def graph_data():
-    c.execute("SELECT datestamp, value FROM readings WHERE sensor = 'airTemp'")
+    c.execute("SELECT datestamp, value FROM readings WHERE sensor = 'moist"
+              "'")
     data = c.fetchall()
 
     dates = []
@@ -64,7 +65,9 @@ def graph_data():
     plt.show()
 
 # read_from_db()
-graph_data()
+# graph_data()
+
+read_from_db()
 
 c.close
 conn.close()
