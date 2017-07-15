@@ -100,7 +100,7 @@ def getHumidReturn():
 
 if __name__ == "__main__":
     try:
-        num_of_readings = 240
+        num_of_readings = 480
         for i in range(num_of_readings):
             print(i)
             light = getLightReturn()
