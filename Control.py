@@ -125,6 +125,9 @@ if __name__ == "__main__":
                 print("Servo2: ", servo2pos(), " Servo3: ", servo3pos(), " Servo4: ", servo4pos())
                 print("x: ",(endx(leg1,servo2pos(),leg2,servo3pos(),leg3,servo4pos())))  # print distance from origin
                 print("y: ", (endy(leg1, servo2pos(), leg2, servo3pos(), leg3, servo4pos())))  # print h from base
+                sc.pretty_print_control_table(2)
+                sc.pretty_print_control_table(3)
+                sc.pretty_print_control_table(4)
                 servonum = input("Enter servo num: ")
                 servonum = int(servonum)
                 angle = input("Enter angle: ")
