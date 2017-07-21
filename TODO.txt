@@ -1,0 +1,4 @@
+TOTO:
+Get 325 to work with opencv on the jetson as show in this video https://www.youtube.com/watch?v=zyGIy42VZQg\\
+Use 325 to measure distance to target in an image.
+Mount the 325.
