@@ -100,9 +100,7 @@ def getHumidReturn():
 
 if __name__ == "__main__":
     try:
-        num_of_readings = 480
-        for i in range(num_of_readings):
-            print(i)
+        while time.time() < 1500688800000:  # 10pm on 7/21/17
             light = getLightReturn()
             light_entry(light)
 
@@ -118,7 +116,8 @@ if __name__ == "__main__":
             humid = getHumidReturn()
             humidity_entry(humid)
 
-            time.sleep(60)
+            time.sleep(1)
+
     except:
         c.close()
         conn.close()
